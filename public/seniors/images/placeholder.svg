@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Image placeholder">
+  <rect width="1200" height="900" fill="#f8fafc"/>
+  <rect x="48" y="48" width="1104" height="804" rx="20" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+  <path d="M520 380h160v160H520z" fill="none" stroke="#cbd5e1" stroke-width="3"/>
+  <circle cx="580" cy="430" r="18" fill="#cbd5e1"/>
+  <path d="M520 520l48-48 32 32 80-80 48 48v76H520z" fill="#cbd5e1"/>
+</svg>

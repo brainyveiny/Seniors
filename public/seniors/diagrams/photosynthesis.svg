@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Photosynthesis in Leaf</title>
+  <desc id="desc">Leaf diagram showing sunlight, carbon dioxide and water as inputs, and oxygen and glucose as outputs.</desc>
+
+  <!-- soft background -->
+  <rect width="520" height="360" rx="16" fill="#F8FAFC"/>
+
+  <!-- leaf body -->
+  <ellipse cx="260" cy="185" rx="118" ry="78" fill="#4ADE80" stroke="#16A34A" stroke-width="3"/>
+  <ellipse cx="260" cy="185" rx="92" ry="56" fill="#86EFAC" opacity="0.55"/>
+  <path d="M260 112 C250 160 250 210 260 258" stroke="#15803D" stroke-width="3" stroke-linecap="round"/>
+  <path d="M260 150 C220 165 200 185 210 210" stroke="#15803D" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M260 150 C300 165 320 185 310 210" stroke="#15803D" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M260 190 C225 205 215 225 225 245" stroke="#15803D" stroke-width="1.8" stroke-linecap="round" opacity="0.55"/>
+  <path d="M260 190 C295 205 305 225 295 245" stroke="#15803D" stroke-width="1.8" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- sun -->
+  <circle cx="260" cy="42" r="22" fill="#FDE047" stroke="#EAB308" stroke-width="2"/>
+  <g stroke="#FACC15" stroke-width="2.5" stroke-linecap="round">
+    <line x1="260" y1="8" x2="260" y2="16"/>
+    <line x1="260" y1="68" x2="260" y2="76"/>
+    <line x1="226" y1="42" x2="234" y2="42"/>
+    <line x1="286" y1="42" x2="294" y2="42"/>
+    <line x1="236" y1="18" x2="242" y2="24"/>
+    <line x1="278" y1="60" x2="284" y2="66"/>
+    <line x1="284" y1="18" x2="278" y2="24"/>
+    <line x1="242" y1="60" x2="236" y2="66"/>
+  </g>
+  <text x="260" y="92" text-anchor="middle" fill="#854D0E" font-family="system-ui,Segoe UI,sans-serif" font-size="13" font-weight="600">Sunlight</text>
+  <path d="M260 98 L260 118" stroke="#EAB308" stroke-width="2.5" marker-end="url(#arrowYellow)"/>
+
+  <!-- CO2 left -->
+  <rect x="28" y="150" width="108" height="36" rx="10" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="82" y="173" text-anchor="middle" fill="#1D4ED8" font-family="system-ui,Segoe UI,sans-serif" font-size="12" font-weight="600">COÇ</text>
+  <text x="82" y="140" text-anchor="middle" fill="#64748B" font-family="system-ui,Segoe UI,sans-serif" font-size="11">Carbon Dioxide</text>
+  <path d="M138 168 L148 168" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- H2O left bottom -->
+  <rect x="28" y="230" width="108" height="36" rx="10" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="82" y="253" text-anchor="middle" fill="#1D4ED8" font-family="system-ui,Segoe UI,sans-serif" font-size="12" font-weight="600">HÇO</text>
+  <text x="82" y="220" text-anchor="middle" fill="#64748B" font-family="system-ui,Segoe UI,sans-serif" font-size="11">Water</text>
+  <path d="M138 248 L148 210" stroke="#3B82F6" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- O2 right -->
+  <path d="M372 150 L390 150" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <rect x="392" y="132" width="100" height="36" rx="10" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="442" y="155" text-anchor="middle" fill="#15803D" font-family="system-ui,Segoe UI,sans-serif" font-size="12" font-weight="600">OÇ</text>
+  <text x="442" y="122" text-anchor="middle" fill="#64748B" font-family="system-ui,Segoe UI,sans-serif" font-size="11">Oxygen</text>
+
+  <!-- Glucose right bottom -->
+  <path d="M372 220 L390 248" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <rect x="392" y="230" width="100" height="36" rx="10" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="442" y="253" text-anchor="middle" fill="#15803D" font-family="system-ui,Segoe UI,sans-serif" font-size="12" font-weight="600">CÜHÅÇOÜ</text>
+  <text x="442" y="220" text-anchor="middle" fill="#64748B" font-family="system-ui,Segoe UI,sans-serif" font-size="11">Glucose</text>
+
+  <defs>
+    <marker id="arrowYellow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#EAB308"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#3B82F6"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#16A34A"/>
+    </marker>
+  </defs>
+</svg>

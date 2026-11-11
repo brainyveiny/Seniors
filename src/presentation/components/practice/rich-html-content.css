@@ -1,0 +1,25 @@
+.rich-html-content {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    "Noto Sans Devanagari",
+    "Nirmala UI",
+    "Mangal",
+    sans-serif;
+}
+
+.rich-html-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.rich-html-content table {
+  border-collapse: collapse;
+}
+
+.rich-html-content td,
+.rich-html-content th {
+  border: 1px solid #e2e8f0;
+  padding: 0.25rem 0.5rem;
+}

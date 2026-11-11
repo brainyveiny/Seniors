@@ -1,0 +1,9 @@
+.rich-text-editor-host .tox-tinymce {
+  width: 100% !important;
+  border-color: #ced4da !important;
+  border-radius: 0.25rem;
+}
+
+.rich-text-editor-host .tox .tox-edit-area__iframe {
+  background: #fff;
+}
