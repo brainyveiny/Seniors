@@ -8,11 +8,11 @@ import { Eye, EyeOff } from "lucide-react";
 import type { SiteContext } from "@/application/hooks/use-site-context";
 import type { SeniorsRole } from "@/infrastructure/auth/auth-constants";
 import {
-  SENIORS_AUTH_GRADIENT,
   SENIORS_AUTH_INPUT,
-  SENIORS_AUTH_PRIMARY,
   SeniorsAuthShell,
+  type SeniorsAuthSchoolBrand,
 } from "@/presentation/components/templates/seniors/SeniorsAuthShell";
+import { useTenantServerSiteSnapshot } from "@/presentation/components/tenant/TenantServerSiteProvider";
 import {
   SENIORS_PLATFORM_LOGIN_PATHS,
   seniorsTenantPortalPath,
@@ -77,6 +77,18 @@ function safeLoginNext(
 
 const INPUT = SENIORS_AUTH_INPUT;
 
+/** Branding of the school whose login page this is, or null on platform pages. */
+function useSchoolBrand(ctx: SiteContext | null | undefined): SeniorsAuthSchoolBrand | null {
+  const snapshot = useTenantServerSiteSnapshot();
+  if (!ctx || !snapshot || snapshot.tenant !== ctx.tenant) return null;
+  return {
+    name: snapshot.academyName,
+    logoUrl: snapshot.logoUrl,
+    tagline: snapshot.tagline,
+    brandHex: snapshot.brandHex,
+  };
+}
+
 type Step =
   | "credentials"
   | "forgot-email"
@@ -97,6 +109,7 @@ export function SeniorsRoleLoginPage({
   const searchParams = useSearchParams();
   const meta = ROLE_META[role];
   const homeHref = platformMode || !ctx ? "/seniors" : ctx.sitePath("");
+  const school = useSchoolBrand(platformMode ? null : ctx);
 
   const [step, setStep] = useState<Step>("credentials");
   const [email, setEmail] = useState("");
@@ -269,18 +282,19 @@ export function SeniorsRoleLoginPage({
 
   return (
     <SeniorsAuthShell
+      school={school}
       onClose={() => {
         window.location.href = homeHref;
       }}
       headerAction={
-        <span className="rounded-full bg-[#570080] px-3 py-1 text-xs font-semibold text-white">
+        <span className="rounded-full bg-[var(--sp-auth-primary)] px-3 py-1 text-xs font-semibold text-[var(--sp-auth-on-primary)]">
           {meta.badge}
         </span>
       }
       footer={
         <>
           Don&apos;t have an account?{" "}
-          <Link href="/seniors/signup" className="font-semibold text-[#570080] hover:underline">
+          <Link href="/seniors/signup" className="font-semibold text-[var(--sp-auth-link)] hover:underline">
             Sign up
           </Link>
         </>
@@ -359,7 +373,7 @@ export function SeniorsRoleLoginPage({
               <div className="flex justify-end">
                 <button
                   type="button"
-                  className="text-sm font-semibold text-[#570080] hover:underline"
+                  className="text-sm font-semibold text-[var(--sp-auth-link)] hover:underline"
                   onClick={() => {
                     setError(null);
                     setSuccess(null);
@@ -380,8 +394,8 @@ export function SeniorsRoleLoginPage({
                   password.length < 6 ||
                   (needsLoginSchoolCode && !schoolCode.trim())
                 }
-                className="w-full rounded-lg py-3 text-sm font-semibold text-white hover:brightness-95 disabled:opacity-60"
-                style={{ background: SENIORS_AUTH_GRADIENT }}
+                className="w-full rounded-lg py-3 text-sm font-semibold text-[var(--sp-auth-on-primary)] hover:brightness-95 disabled:opacity-60"
+                style={{ background: "var(--sp-auth-button)" }}
               >
                 {loading ? "Signing in…" : "Sign In"}
               </button>
@@ -411,8 +425,8 @@ export function SeniorsRoleLoginPage({
               <button
                 type="submit"
                 disabled={loading || !email.trim()}
-                className="w-full rounded-lg py-3 text-sm font-semibold text-white disabled:opacity-60"
-                style={{ backgroundColor: "#2563EB" }}
+                className="w-full rounded-lg py-3 text-sm font-semibold text-[var(--sp-auth-on-primary)] disabled:opacity-60"
+                style={{ background: "var(--sp-auth-button)" }}
               >
                 {loading ? "Sending code…" : "Send reset code"}
               </button>
@@ -442,8 +456,8 @@ export function SeniorsRoleLoginPage({
               <button
                 type="submit"
                 disabled={loading || otp.length !== 6}
-                className="w-full rounded-lg py-3 text-sm font-semibold text-white disabled:opacity-60"
-                style={{ backgroundColor: "#2563EB" }}
+                className="w-full rounded-lg py-3 text-sm font-semibold text-[var(--sp-auth-on-primary)] disabled:opacity-60"
+                style={{ background: "var(--sp-auth-button)" }}
               >
                 {loading ? "Verifying…" : "Verify code"}
               </button>
@@ -451,7 +465,7 @@ export function SeniorsRoleLoginPage({
                 type="button"
                 disabled={loading}
                 onClick={() => void requestForgotOtp()}
-                className="w-full text-center text-sm font-semibold text-[#570080]"
+                className="w-full text-center text-sm font-semibold text-[var(--sp-auth-link)]"
               >
                 Resend code
               </button>
@@ -529,8 +543,8 @@ export function SeniorsRoleLoginPage({
               <button
                 type="submit"
                 disabled={loading || newPassword.length < 6 || confirmPassword.length < 6}
-                className="w-full rounded-lg py-3 text-sm font-semibold text-white disabled:opacity-60"
-                style={{ backgroundColor: "#2563EB" }}
+                className="w-full rounded-lg py-3 text-sm font-semibold text-[var(--sp-auth-on-primary)] disabled:opacity-60"
+                style={{ background: "var(--sp-auth-button)" }}
               >
                 {loading ? "Updating…" : "Update password"}
               </button>
@@ -546,7 +560,7 @@ export function SeniorsRoleLoginPage({
             <Link
               key={r.role}
               href={roleLoginHref(ctx, r.role, platformMode)}
-              className="rounded-lg border border-[#E5E7EB] px-3 py-1.5 text-xs font-semibold text-[#374151] hover:border-[#570080]/30 hover:bg-[#F9FAFB]"
+              className="rounded-lg border border-[#E5E7EB] px-3 py-1.5 text-xs font-semibold text-[#374151] hover:border-[var(--sp-auth-accent)]/30 hover:bg-[#F9FAFB]"
             >
               {r.label}
             </Link>
@@ -567,16 +581,18 @@ function ErrorText({ message }: { message: string }) {
 }
 
 export function SeniorsLoginHub({ ctx }: { ctx?: SiteContext | null }) {
+  const school = useSchoolBrand(ctx);
   return (
     <SeniorsAuthShell
       wide
+      school={school}
       onClose={() => {
         window.location.href = "/seniors";
       }}
       footer={
         <>
           New to Seniors?{" "}
-          <Link href="/seniors/signup" className="font-semibold text-[#570080] hover:underline">
+          <Link href="/seniors/signup" className="font-semibold text-[var(--sp-auth-link)] hover:underline">
             Create an account
           </Link>
         </>
@@ -593,9 +609,9 @@ export function SeniorsLoginHub({ ctx }: { ctx?: SiteContext | null }) {
           <Link
             key={r.role}
             href={roleLoginHref(ctx, r.role, !ctx)}
-            className="rounded-xl border border-[#E5E7EB] bg-white p-5 shadow-sm transition hover:border-[#570080]/40 hover:shadow-[0_8px_24px_rgba(85,33,181,0.1)]"
+            className="rounded-xl border border-[#E5E7EB] bg-white p-5 shadow-sm transition hover:border-[var(--sp-auth-accent)]/40 hover:shadow-[0_8px_24px_rgba(85,33,181,0.1)]"
           >
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#570080]">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[var(--sp-auth-link)]">
               {ROLE_META[r.role].badge}
             </p>
             <p className="mt-1 font-semibold text-[#1F2937]">{ROLE_META[r.role].title}</p>

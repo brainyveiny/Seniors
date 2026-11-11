@@ -33,10 +33,10 @@ const RichTextEditor = dynamic(
 );
 
 const INPUT =
-  "w-full rounded-xl border border-[#E5E7EB] px-3 py-2.5 text-sm text-[#111827] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none";
+  "w-full rounded-xl border border-[#E5E7EB] px-3 py-2.5 text-sm text-[#111827] placeholder:text-[#9CA3AF] focus:border-[var(--sp-brand)] focus:outline-none";
 const LABEL = "mb-1 block text-xs font-semibold uppercase tracking-wide text-[#6B7280]";
 const BTN_PRIMARY =
-  "inline-flex items-center gap-2 rounded-xl bg-[#2563EB] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60";
+  "inline-flex items-center gap-2 rounded-xl bg-[var(--sp-brand)] px-4 py-2.5 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60";
 const BTN_GHOST =
   "inline-flex items-center gap-2 rounded-xl border border-[#E5E7EB] bg-white px-4 py-2.5 text-sm font-semibold text-[#374151] hover:bg-[#F9FAFB] disabled:opacity-60";
 const BTN_DANGER =
@@ -845,7 +845,7 @@ export function TeacherTopicStudio({
   }
 
   const SELECT =
-    `${INPUT} h-11 appearance-none bg-white pl-10 pr-9 shadow-sm transition focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15 disabled:cursor-not-allowed disabled:bg-[#F9FAFB] disabled:text-[#9CA3AF] disabled:shadow-none`;
+    `${INPUT} h-11 appearance-none bg-white pl-10 pr-9 shadow-sm transition focus:border-[var(--sp-brand)] focus:ring-2 focus:ring-[var(--sp-brand)]/15 disabled:cursor-not-allowed disabled:bg-[#F9FAFB] disabled:text-[#9CA3AF] disabled:shadow-none`;
 
   function ScopeField({
     label,
@@ -891,7 +891,7 @@ export function TeacherTopicStudio({
             state === "done"
               ? "bg-[#059669] text-white"
               : state === "active"
-                ? "bg-[#2563EB] text-white ring-4 ring-[#2563EB]/15"
+                ? "bg-[var(--sp-brand)] text-[var(--sp-on-brand)] ring-4 ring-[var(--sp-brand)]/15"
                 : "bg-[#E5E7EB] text-[#6B7280]"
           }`}
         >
@@ -1154,7 +1154,7 @@ export function TeacherTopicStudio({
       <div className="border-b border-[#F3F4F6] px-5 py-5 sm:px-7 sm:py-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="max-w-xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#2563EB]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--sp-brand-text)]">
               Topic Studio
             </p>
             <h2 className="mt-1.5 text-2xl font-semibold tracking-tight text-[#111827]">
@@ -1202,7 +1202,7 @@ export function TeacherTopicStudio({
             {selectedSubjectId && !showCreateTopic ? (
               <button
                 type="button"
-                className="mt-2.5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8]"
+                className="mt-2.5 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--sp-brand-text)] hover:text-[var(--sp-brand-text)]"
                 onClick={() => {
                   setShowCreateTopic(true);
                   setSelectedTopicId("");
@@ -1497,7 +1497,7 @@ export function TeacherTopicStudio({
                                 <span>Uploaded image</span>
                                 <button
                                   type="button"
-                                  className="text-xs font-semibold text-[#2563EB]"
+                                  className="text-xs font-semibold text-[var(--sp-brand-text)]"
                                   onClick={() => updateDiagram(index, { url: "" })}
                                 >
                                   Replace
@@ -1583,7 +1583,7 @@ export function TeacherTopicStudio({
                         <li
                           key={content.id}
                           className={`flex flex-wrap items-center gap-3 px-5 py-3.5 transition ${
-                            active ? "bg-[#EFF6FF]" : "hover:bg-[#F9FAFB]"
+                            active ? "bg-[var(--sp-brand-soft)]" : "hover:bg-[#F9FAFB]"
                           }`}
                         >
                           <span className="w-6 shrink-0 text-center text-xs font-medium text-[#9CA3AF]">
@@ -1612,7 +1612,7 @@ export function TeacherTopicStudio({
                                 href={content.fileUrl}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="mt-1 inline-flex text-xs font-medium text-[#2563EB] hover:underline"
+                                className="mt-1 inline-flex text-xs font-medium text-[var(--sp-brand-text)] hover:underline"
                               >
                                 Open file
                               </a>
@@ -1760,7 +1760,7 @@ export function TeacherTopicStudio({
                                       href={contentEditor.fileUrl}
                                       target="_blank"
                                       rel="noreferrer"
-                                      className="truncate font-medium text-[#2563EB] hover:underline"
+                                      className="truncate font-medium text-[var(--sp-brand-text)] hover:underline"
                                     >
                                       PDF attached
                                     </a>
@@ -1888,7 +1888,7 @@ export function TeacherTopicStudio({
                       <li
                         key={quiz.id}
                         className={`flex flex-wrap items-center gap-3 px-5 py-3.5 transition ${
-                          active ? "bg-[#EFF6FF]" : "hover:bg-[#F9FAFB]"
+                          active ? "bg-[var(--sp-brand-soft)]" : "hover:bg-[#F9FAFB]"
                         }`}
                       >
                         <span className="w-6 shrink-0 text-center text-xs font-medium text-[#9CA3AF]">

@@ -243,7 +243,7 @@ export function StudentExamPrepPage({
               description="When your school schedules unit tests, they will show up here with countdown pills."
             />
           ) : (
-            <ol className="relative space-y-3 border-l-2 border-[#E8F0FE] pl-5">
+            <ol className="relative space-y-3 border-l-2 border-[var(--sp-brand-border)] pl-5">
               {exams.map((exam, i) => {
                 const pill = daysLeftPill(exam.daysLeft);
                 return (
@@ -251,7 +251,7 @@ export function StudentExamPrepPage({
                     <span
                       className="absolute -left-[1.55rem] top-5 flex h-3.5 w-3.5 rounded-full border-2 border-white shadow-sm"
                       style={{
-                        backgroundColor: i === 0 ? STUDENT_ACCENT : "#93C5FD",
+                        backgroundColor: i === 0 ? STUDENT_ACCENT : "var(--sp-brand-border)",
                       }}
                     />
                     <StudentLiftCard className="p-4">
@@ -415,7 +415,7 @@ export function StudentExamPrepPage({
               </p>
               <button
                 type="button"
-                className="text-xs font-semibold text-[#1a4696] hover:underline"
+                className="text-xs font-semibold text-[var(--sp-brand-text)] hover:underline"
                 onClick={() => setShowAll((v) => !v)}
               >
                 {showAll ? "Show suggested only" : "Browse all topics"}
@@ -436,7 +436,7 @@ export function StudentExamPrepPage({
                     <label
                       key={topic.id}
                       className={`flex cursor-pointer items-start gap-3 rounded-xl px-3 py-2.5 ${
-                        checked ? "bg-[#EFF6FF]" : "hover:bg-[#F9FAFB]"
+                        checked ? "bg-[var(--sp-brand-soft)]" : "hover:bg-[#F9FAFB]"
                       }`}
                     >
                       <input
@@ -481,7 +481,7 @@ export function StudentExamPrepPage({
             <div className="flex flex-wrap gap-2 border-t border-[#F3F4F6] px-5 py-4">
               <button
                 type="button"
-                className="rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60"
+                className="rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60"
                 disabled={selectedIds.length === 0 || loadingSession}
                 onClick={() => void startPractice()}
               >
@@ -549,7 +549,7 @@ export function StudentExamPrepPage({
                   <div className="mt-5 flex flex-wrap justify-center gap-2">
                     <Link
                       href={ctx.sitePath(`student/learn/${current.slug}`)}
-                      className="rounded-lg bg-[#1a4696] px-4 py-2 text-sm font-semibold text-white hover:bg-[#163a7a]"
+                      className="rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[#163a7a]"
                     >
                       Open notes
                     </Link>
@@ -604,7 +604,7 @@ export function StudentExamPrepPage({
                   <span className="min-w-0 truncate text-sm font-medium text-[#111827]">
                     {r.title}
                   </span>
-                  <span className="shrink-0 text-sm font-semibold tabular-nums text-[#2563EB]">
+                  <span className="shrink-0 text-sm font-semibold tabular-nums text-[var(--sp-brand-text)]">
                     {r.skipped
                       ? "Notes"
                       : `${r.score}/${r.maxScore} (${Math.round(
@@ -617,7 +617,7 @@ export function StudentExamPrepPage({
             <div className="flex flex-wrap gap-2 border-t border-[#F3F4F6] px-5 py-4">
               <button
                 type="button"
-                className="rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1D4ED8]"
+                className="rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)]"
                 onClick={closeSession}
               >
                 Done

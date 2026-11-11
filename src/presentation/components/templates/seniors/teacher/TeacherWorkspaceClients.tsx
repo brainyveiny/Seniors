@@ -28,10 +28,10 @@ import { uploadSeniorsAttachment } from "@/application/services/seniors-media-up
 import { formatDate, formatDateTime } from "@/shared/lib/format-date";
 
 const INPUT =
-  "w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none";
+  "w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[var(--sp-brand)] focus:outline-none";
 const LABEL = "mb-1 block text-xs font-medium text-[#6B7280]";
 const BTN_PRIMARY =
-  "rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60";
+  "rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60";
 const BTN_GHOST =
   "rounded-lg border border-[#E5E7EB] px-3 py-1.5 text-sm font-medium text-[#374151] hover:bg-white";
 
@@ -390,7 +390,7 @@ export function TeacherAssignmentsClient({
 
   return (
     <>
-      <div className="mb-4 rounded-lg bg-[#EFF6FF] px-4 py-3 text-sm text-[#1E40AF]">
+      <div className="mb-4 rounded-lg bg-[var(--sp-brand-soft)] px-4 py-3 text-sm text-[var(--sp-brand-text)]">
         Click any assignment below to view student submissions and grade their work.
       </div>
 
@@ -550,7 +550,7 @@ export function TeacherAssignmentsClient({
                             href={url}
                             target="_blank"
                             rel="noreferrer"
-                            className="truncate font-medium text-[#2563EB] hover:underline"
+                            className="truncate font-medium text-[var(--sp-brand-text)] hover:underline"
                           >
                             Attachment {i + 1}
                           </a>
@@ -635,7 +635,7 @@ export function TeacherAssignmentsClient({
                       )
                     }
                   >
-                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#EFF6FF] text-[#2563EB]">
+                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]">
                       <FileText className="h-4 w-4" />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -708,7 +708,7 @@ export function TeacherAssignmentsClient({
                               href={url}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-1.5 text-xs font-medium text-[#2563EB] hover:bg-[#EFF6FF]"
+                              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E5E7EB] bg-[#F9FAFB] px-2.5 py-1.5 text-xs font-medium text-[var(--sp-brand-text)] hover:bg-[var(--sp-brand-soft)]"
                             >
                               <Paperclip className="h-3.5 w-3.5" />
                               Attachment {i + 1}
@@ -744,7 +744,7 @@ export function TeacherAssignmentsClient({
                                   }`}
                                 >
                                   <div className="flex items-center gap-3">
-                                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#EFF6FF] text-[11px] font-bold text-[#1D4ED8]">
+                                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--sp-brand-soft)] text-[11px] font-bold text-[var(--sp-brand-text)]">
                                       {(s.studentName || "?").slice(0, 1).toUpperCase()}
                                     </span>
                                     <div className="min-w-0 flex-1">
@@ -770,7 +770,7 @@ export function TeacherAssignmentsClient({
                                             href={url}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#DBEAFE] bg-[#EFF6FF] text-[#1D4ED8] hover:bg-[#DBEAFE]"
+                                            className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-[var(--sp-brand-border)] bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)] hover:bg-[var(--sp-brand-soft-2)]"
                                             title={`Student file ${i + 1}`}
                                             onClick={(e) => e.stopPropagation()}
                                           >
@@ -1655,7 +1655,7 @@ export function TeacherAnnouncementsClient({ data }: { data: TeacherWorkspaceDat
                         }}
                         className={`rounded-xl border px-3 py-2.5 text-left text-xs font-semibold transition ${
                           active
-                            ? "border-[#2563EB] bg-[#EFF6FF] text-[#1D4ED8]"
+                            ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]"
                             : "border-[#E5E7EB] bg-white text-[#374151] hover:bg-[#F9FAFB]"
                         }`}
                       >
@@ -1802,7 +1802,7 @@ export function TeacherAnnouncementsClient({ data }: { data: TeacherWorkspaceDat
                   className={`rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
                     a.source === "school"
                       ? "bg-[#F3F4F6] text-[#4B5563]"
-                      : "bg-[#EFF6FF] text-[#1D4ED8]"
+                      : "bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]"
                   }`}
                 >
                   {a.source === "school" ? "School" : "Yours"}
@@ -1996,7 +1996,7 @@ export function TeacherStudentsClient({ data }: { data: TeacherWorkspaceData }) 
                 <td className="px-4 py-3 text-right">
                   <button
                     type="button"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#E5E7EB] text-[#2563EB] transition hover:bg-[#EFF6FF]"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#E5E7EB] text-[var(--sp-brand-text)] transition hover:bg-[var(--sp-brand-soft)]"
                     aria-label={`View ${s.name} performance`}
                     onClick={() => setSelectedStudent(s)}
                   >
@@ -2171,7 +2171,7 @@ export function TeacherStudentsClient({ data }: { data: TeacherWorkspaceData }) 
                               {attempt.subjectName} · {attempt.topicTitle}
                             </p>
                           </div>
-                          <span className="shrink-0 text-sm font-semibold tabular-nums text-[#2563EB]">
+                          <span className="shrink-0 text-sm font-semibold tabular-nums text-[var(--sp-brand-text)]">
                             {attempt.score ?? "—"}/{attempt.maxScore ?? "—"}
                           </span>
                         </li>
@@ -2281,13 +2281,13 @@ export function TeacherClassworkClient({ data }: { data: TeacherWorkspaceData })
   const tabClass = (active: boolean) =>
     `rounded-lg px-4 py-2 text-sm font-semibold transition ${
       active
-        ? "bg-[#2563EB] text-white shadow-sm"
+        ? "bg-[var(--sp-brand)] text-[var(--sp-on-brand)] shadow-sm"
         : "bg-white text-[#374151] hover:bg-[#F9FAFB]"
     }`;
 
   return (
     <div className="space-y-5">
-      <div className="rounded-lg bg-[#EFF6FF] px-4 py-3 text-sm text-[#1E40AF]">
+      <div className="rounded-lg bg-[var(--sp-brand-soft)] px-4 py-3 text-sm text-[var(--sp-brand-text)]">
         Student assignment submissions and quiz results for your classes. Click any
         item to expand and view details or grade work.
       </div>

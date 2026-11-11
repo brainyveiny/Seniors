@@ -1,21 +1,11 @@
 import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { AUTH_SUPER_ADMIN_COOKIE } from "@/infrastructure/auth/auth-constants";
-import { verifySuperAdminToken } from "@/infrastructure/auth/super-admin-session";
-import { isDatabaseConfigured } from "@/infrastructure/database/prisma";
+import { requireSuperAdminApi } from "@/infrastructure/auth/super-admin-guard";
+import { logPlatformAction } from "@/infrastructure/seniors/platform-audit";
 import { createSeniorsSchool } from "@/infrastructure/seniors/create-seniors-school";
 
 export async function POST(request: Request) {
-  if (!isDatabaseConfigured()) {
-    return NextResponse.json({ error: "Database not configured" }, { status: 503 });
-  }
-
-  const cookieStore = await cookies();
-  const token = cookieStore.get(AUTH_SUPER_ADMIN_COOKIE)?.value;
-  const session = token ? await verifySuperAdminToken(token) : null;
-  if (!session) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const auth = await requireSuperAdminApi();
+  if (auth instanceof NextResponse) return auth;
 
   try {
     const body = (await request.json()) as {
@@ -24,6 +14,9 @@ export async function POST(request: Request) {
       adminName?: string;
       adminEmail?: string;
       adminPassword?: string;
+      primaryColor?: string;
+      city?: string;
+      contactPhone?: string;
     };
 
     const created = await createSeniorsSchool({
@@ -32,6 +25,15 @@ export async function POST(request: Request) {
       adminName: body.adminName ?? "School Admin",
       adminEmail: body.adminEmail ?? "",
       adminPassword: body.adminPassword?.trim() || "demo1234",
+      primaryColor: body.primaryColor,
+      city: body.city,
+      contactPhone: body.contactPhone,
+    });
+
+    await logPlatformAction(auth, "school.create", {
+      tenantId: created.tenantId,
+      tenantSlug: created.slug,
+      summary: `Created school ${created.schoolName} (${created.slug})`,
     });
 
     return NextResponse.json({

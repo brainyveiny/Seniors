@@ -77,7 +77,7 @@ export function ParentChildrenDetailClient({
                   onClick={() => setActiveId(c.id)}
                   className={`rounded-full border px-3.5 py-2 text-sm font-medium ${
                     c.id === child.id
-                      ? "border-[#2563EB] bg-[#EFF6FF] text-[#1D4ED8]"
+                      ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]"
                       : "border-[#E5E7EB] bg-white text-[#374151]"
                   }`}
                 >
@@ -118,7 +118,7 @@ export function ParentChildrenDetailClient({
                             a.type === "overdue"
                               ? "bg-[#FEF2F2] text-[#DC2626]"
                               : a.type === "exam"
-                                ? "bg-[#EFF6FF] text-[#2563EB]"
+                                ? "bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]"
                                 : "bg-[#FFEDD5] text-[#EA580C]"
                           }`}
                         >
@@ -151,7 +151,7 @@ export function ParentChildrenDetailClient({
                       </div>
                       <div className="h-2 overflow-hidden rounded-full bg-[#E5E7EB]">
                         <div
-                          className="h-full rounded-full bg-[#2563EB]"
+                          className="h-full rounded-full bg-[var(--sp-brand)]"
                           style={{ width: `${s.percent}%` }}
                         />
                       </div>

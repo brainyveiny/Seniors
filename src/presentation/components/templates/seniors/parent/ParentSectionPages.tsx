@@ -170,7 +170,7 @@ export function ParentTestResultsPage({
                     {q.subjectName} · {formatDate(q.submittedAt)}
                   </p>
                 </div>
-                <span className="text-sm font-bold text-[#2563EB]">
+                <span className="text-sm font-bold text-[var(--sp-brand-text)]">
                   {q.percent != null ? `${q.percent}%` : "—"}
                 </span>
               </li>
@@ -341,7 +341,7 @@ export function ParentProfilePage({
       ) : (
         <div className="grid gap-5 lg:grid-cols-3">
           <SeniorsCard className="p-5 lg:col-span-1">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EFF6FF] text-[#2563EB]">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]">
               <UserRound className="h-8 w-8" />
             </div>
             <h3 className="mt-4 text-xl font-bold text-[#111827]">{profile.name}</h3>
@@ -495,7 +495,7 @@ export function ParentCalendarPage({
             const Icon = iconFor(event.type);
             return (
               <SeniorsCard key={event.id} className="flex items-start gap-4 p-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EFF6FF] text-[#2563EB]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -564,7 +564,7 @@ export function ParentLessonPlanPage({
           {data.subjects.map((subject) => (
             <SeniorsCard key={subject.id} className="p-5">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#EFF6FF] text-[#2563EB]">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]">
                   <BookOpen className="h-4 w-4" />
                 </div>
                 <h3 className="text-base font-bold text-[#111827]">{subject.name}</h3>
@@ -587,7 +587,7 @@ export function ParentLessonPlanPage({
                           <span>
                             {topic.number}. {topic.title}
                           </span>
-                          <span className="shrink-0 text-xs font-medium text-[#2563EB]">
+                          <span className="shrink-0 text-xs font-medium text-[var(--sp-brand-text)]">
                             {topic.progressPercent}%
                           </span>
                         </li>

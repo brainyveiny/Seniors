@@ -547,10 +547,8 @@ export async function POST(request: NextRequest, context: RouteContext) {
     }
 
     if (body.action === "save-settings") {
+      // School name, logo and colours are managed by the Seniors super admin.
       const settings = await upsertSchoolSettings(auth.tenantId, {
-        schoolName: body.schoolName,
-        logoUrl: body.logoUrl,
-        primaryColor: body.primaryColor,
         markingScheme: body.markingScheme,
         answerFormat: body.answerFormat,
       });

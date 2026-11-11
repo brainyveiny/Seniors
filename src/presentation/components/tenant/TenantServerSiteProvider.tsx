@@ -10,6 +10,7 @@ export interface TenantServerSiteSnapshot {
   brandHex: string;
   activeTemplateId: WebsiteTemplateId;
   logoUrl: string;
+  tagline: string;
 }
 
 const TenantServerSiteContext = createContext<TenantServerSiteSnapshot | null>(

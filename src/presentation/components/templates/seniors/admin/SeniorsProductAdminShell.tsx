@@ -4,10 +4,14 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Globe,
+  History,
   Home,
   LayoutDashboard,
   LogOut,
+  Megaphone,
   School,
+  ShieldCheck,
+  UserCog,
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/shared/lib/utils";
@@ -25,13 +29,42 @@ const NAV = [
     ],
   },
   {
-    section: "SENIORS",
+    section: "SCHOOLS",
     items: [
       {
         id: "schools",
         label: "Schools",
         href: seniorsProductAdminPath("schools"),
         Icon: School,
+      },
+      {
+        id: "broadcasts",
+        label: "Broadcasts",
+        href: seniorsProductAdminPath("broadcasts"),
+        Icon: Megaphone,
+      },
+      {
+        id: "activity",
+        label: "Activity log",
+        href: seniorsProductAdminPath("activity"),
+        Icon: History,
+      },
+    ],
+  },
+  {
+    section: "PLATFORM",
+    items: [
+      {
+        id: "team",
+        label: "Super admins",
+        href: seniorsProductAdminPath("team"),
+        Icon: ShieldCheck,
+      },
+      {
+        id: "account",
+        label: "My account",
+        href: seniorsProductAdminPath("account"),
+        Icon: UserCog,
       },
     ],
   },
@@ -56,10 +89,12 @@ export function SeniorsProductAdminShell({
   children,
   title = "Overview",
   fullBleed = false,
+  headerAction,
 }: {
   children: React.ReactNode;
-  title?: string;
+  title?: React.ReactNode;
   fullBleed?: boolean;
+  headerAction?: React.ReactNode;
 }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -145,13 +180,15 @@ export function SeniorsProductAdminShell({
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         {!fullBleed ? (
           <header className="flex h-14 shrink-0 items-center justify-between border-b border-neutral-200 bg-white px-6">
-            <h1 className="text-lg font-medium tracking-tight text-neutral-900">{title}</h1>
-            <Link
-              href="/seniors"
-              className="text-sm font-medium text-neutral-600 hover:text-neutral-900"
-            >
-              View Seniors site →
-            </Link>
+            <h1 className="min-w-0 truncate text-lg font-medium tracking-tight text-neutral-900">{title}</h1>
+            {headerAction ?? (
+              <Link
+                href="/seniors"
+                className="text-sm font-medium text-neutral-600 hover:text-neutral-900"
+              >
+                View Seniors site →
+              </Link>
+            )}
           </header>
         ) : null}
         <main

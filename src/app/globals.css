@@ -302,7 +302,7 @@ body {
 }
 .seniors-portal .sp-nav-pill-active {
   background-color: var(--sp-nav-active);
-  color: var(--sp-text-strong);
+  color: var(--sp-brand-text, var(--sp-text-strong));
   box-shadow: var(--sp-shadow-card);
 }
 .seniors-portal .sp-activity-chip {

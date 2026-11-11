@@ -126,7 +126,7 @@ export function SchoolAdminParentServicesPanel({ data }: { data: ParentServicesA
             type="button"
             onClick={() => setTab(t)}
             className={`rounded-full px-3 py-1.5 text-xs font-semibold capitalize ${
-              tab === t ? "bg-[#2563EB] text-white" : "bg-[#F3F4F6] text-[#374151]"
+              tab === t ? "bg-[var(--sp-brand)] text-[var(--sp-on-brand)]" : "bg-[#F3F4F6] text-[#374151]"
             }`}
           >
             {t}
@@ -264,7 +264,7 @@ export function SchoolAdminParentServicesPanel({ data }: { data: ParentServicesA
             {routes.map((r) => (
               <li key={r.id} className="rounded-lg border px-3 py-2 text-sm">
                 <p className="font-semibold">{r.name} {r.vehicleNo ? `· ${r.vehicleNo}` : ""}</p>
-                {r.feePaymentLink ? <p className="text-xs text-[#2563EB]">{r.feePaymentLink}</p> : null}
+                {r.feePaymentLink ? <p className="text-xs text-[var(--sp-brand-text)]">{r.feePaymentLink}</p> : null}
               </li>
             ))}
           </ul>
@@ -381,7 +381,7 @@ function FeeForm({
           type="button"
           disabled={busy || !title.trim() || !studentId}
           onClick={handleSubmit}
-          className="rounded bg-[#2563EB] px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-60 sm:col-span-2 sm:w-fit"
+          className="rounded bg-[var(--sp-brand)] px-3 py-1.5 text-sm font-semibold text-[var(--sp-on-brand)] disabled:opacity-60 sm:col-span-2 sm:w-fit"
         >
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save fee"}
         </button>
@@ -427,7 +427,7 @@ function RouteForm({
         <input className="rounded border border-[#E5E7EB] bg-white px-2 py-1.5 text-sm" placeholder="Vehicle number" value={vehicleNo} onChange={(e) => setVehicleNo(e.target.value)} />
         <input className="rounded border border-[#E5E7EB] bg-white px-2 py-1.5 text-sm" placeholder="Transport fee payment link" value={feePaymentLink} onChange={(e) => setFeePaymentLink(e.target.value)} />
         <textarea className="rounded border border-[#E5E7EB] bg-white px-2 py-1.5 text-sm" placeholder="Stops (one per line: Stop name | 7:30 AM)" rows={3} value={stops} onChange={(e) => setStops(e.target.value)} />
-        <button type="button" disabled={busy || !name.trim()} onClick={handleSubmit} className="rounded bg-[#2563EB] px-3 py-1.5 text-sm font-semibold text-white w-fit disabled:opacity-60">
+        <button type="button" disabled={busy || !name.trim()} onClick={handleSubmit} className="rounded bg-[var(--sp-brand)] px-3 py-1.5 text-sm font-semibold text-[var(--sp-on-brand)] w-fit disabled:opacity-60">
           {busy ? "Saving…" : "Save route"}
         </button>
       </div>
@@ -481,7 +481,7 @@ function CatalogForm({
         <input className="rounded border border-[#E5E7EB] bg-white px-2 py-1.5 text-sm" placeholder="Catalog title" value={title} onChange={(e) => setTitle(e.target.value)} />
         <input className="rounded border border-[#E5E7EB] bg-white px-2 py-1.5 text-sm" placeholder="Academic year" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} />
         <textarea className="rounded border border-[#E5E7EB] bg-white px-2 py-1.5 text-sm" placeholder="Items (one per line: Name | Price | S,M,L)" rows={4} value={itemsText} onChange={(e) => setItemsText(e.target.value)} />
-        <button type="button" disabled={busy || !title.trim()} onClick={handleSubmit} className="rounded bg-[#2563EB] px-3 py-1.5 text-sm font-semibold text-white w-fit disabled:opacity-60">
+        <button type="button" disabled={busy || !title.trim()} onClick={handleSubmit} className="rounded bg-[var(--sp-brand)] px-3 py-1.5 text-sm font-semibold text-[var(--sp-on-brand)] w-fit disabled:opacity-60">
           {busy ? "Saving…" : "Save catalog"}
         </button>
       </div>

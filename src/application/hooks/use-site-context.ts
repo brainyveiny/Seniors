@@ -29,7 +29,7 @@ export function useSiteContext(tenant: string): SiteContext {
     academyName: useServer ? snapshot.academyName : "Seniors",
     ownerName: useServer ? snapshot.ownerName : "School Admin",
     brandHex: useServer ? snapshot.brandHex : DEFAULT_BRAND_HEX,
-    tagline: DEFAULT_TAGLINE,
+    tagline: (useServer && snapshot.tagline) || DEFAULT_TAGLINE,
     activeTemplateId: "seniors-platform",
     sitePath: seniorsPlatformSitePath,
     footerBlock: null,

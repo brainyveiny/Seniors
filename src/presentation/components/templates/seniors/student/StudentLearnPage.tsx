@@ -45,7 +45,7 @@ function subjectVisual(name: string): {
 } {
   const n = name.toLowerCase();
   if (n.includes("math") || n.includes("maths")) {
-    return { Icon: Calculator, bg: "bg-[#DBEAFE]", fg: "text-[#2563EB]" };
+    return { Icon: Calculator, bg: "bg-[var(--sp-brand-soft-2)]", fg: "text-[var(--sp-brand-text)]" };
   }
   if (n.includes("science") || n.includes("chem") || n.includes("bio") || n.includes("phy")) {
     return { Icon: FlaskConical, bg: "bg-[#DCFCE7]", fg: "text-[#16A34A]" };
@@ -59,7 +59,7 @@ function subjectVisual(name: string): {
   if (n.includes("computer") || n.includes("it")) {
     return { Icon: Atom, bg: "bg-[#F3E8FF]", fg: "text-[#9333EA]" };
   }
-  return { Icon: BookOpen, bg: "bg-[#EFF6FF]", fg: "text-[#2563EB]" };
+  return { Icon: BookOpen, bg: "bg-[var(--sp-brand-soft)]", fg: "text-[var(--sp-brand-text)]" };
 }
 
 function chapterStatus(ch: SeniorsChapterSummary, selected: boolean) {
@@ -256,7 +256,7 @@ export function StudentLearnPage({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search subjects, chapters or topics..."
-            className="w-full rounded-xl border border-[#E5E7EB] bg-white py-2.5 pl-10 pr-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8] shadow-sm outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15"
+            className="w-full rounded-xl border border-[#E5E7EB] bg-white py-2.5 pl-10 pr-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8] shadow-sm outline-none focus:border-[var(--sp-brand)] focus:ring-2 focus:ring-[var(--sp-brand)]/15"
           />
         </label>
       </div>
@@ -289,7 +289,7 @@ export function StudentLearnPage({
                       className={cn(
                         "flex w-full items-center gap-3 rounded-xl border px-3 py-3 text-left transition",
                         selected
-                          ? "border-[#2563EB] bg-[#EFF6FF] shadow-sm"
+                          ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)] shadow-sm"
                           : "border-transparent bg-white hover:bg-[#F8FAFC]",
                       )}
                     >
@@ -358,7 +358,7 @@ export function StudentLearnPage({
                     onClick={() => setSelectedChapterId(ch.id)}
                     className={cn(
                       "flex w-full items-center gap-3 px-4 py-3 text-left transition",
-                      selected ? "bg-[#EFF6FF]" : "hover:bg-[#F8FAFC]",
+                      selected ? "bg-[var(--sp-brand-soft)]" : "hover:bg-[#F8FAFC]",
                     )}
                   >
                     <span
@@ -376,7 +376,7 @@ export function StudentLearnPage({
                       <span
                         className={cn(
                           "block text-sm font-medium",
-                          selected ? "text-[#1E3A8A]" : "text-[#0F172A]",
+                          selected ? "text-[var(--sp-brand-text)]" : "text-[#0F172A]",
                         )}
                       >
                         {ch.name}
@@ -579,8 +579,8 @@ export function StudentLearnPage({
         className="flex items-start gap-2.5 rounded-xl border px-4 py-3 text-sm"
         style={{
           backgroundColor: ACCENT_SOFT,
-          borderColor: "#BFDBFE",
-          color: "#1E3A8A",
+          borderColor: "var(--sp-brand-border)",
+          color: "var(--sp-brand-text)",
         }}
       >
         <Info className="mt-0.5 h-4 w-4 shrink-0" />

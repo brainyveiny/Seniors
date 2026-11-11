@@ -147,7 +147,7 @@ export function TeacherAttendancePanel({ data }: { data: TeacherAttendanceData }
             </button>
             <button
               type="button"
-              className="rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60"
+              className="rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60"
               onClick={handleSave}
               disabled={saving || rows.length === 0}
             >
@@ -201,7 +201,7 @@ export function TeacherAttendancePanel({ data }: { data: TeacherAttendanceData }
         )}
       </SeniorsCard>
 
-      <div className="flex items-start gap-2 rounded-lg bg-[#EFF6FF] p-4 text-sm text-[#1E40AF]">
+      <div className="flex items-start gap-2 rounded-lg bg-[var(--sp-brand-soft)] p-4 text-sm text-[var(--sp-brand-text)]">
         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
         Mark daily attendance here. Parents and school admins can view the records in their portals.
       </div>

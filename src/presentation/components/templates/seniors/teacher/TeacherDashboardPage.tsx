@@ -261,8 +261,8 @@ export function TeacherDashboardPage({
           value={data.stats.upcomingTests}
           pastel="purple"
           icon={<Calendar className="h-5 w-5" />}
-          iconBg="#DBEAFE"
-          iconColor="#2563EB"
+          iconBg="var(--sp-brand-soft-2)"
+          iconColor="var(--sp-brand-text)"
         />
       </div>
 
@@ -332,7 +332,7 @@ export function TeacherDashboardPage({
             <div className="border-t border-[#F3F4F6] px-5 py-3">
               <Link
                 href={ctx.sitePath("teacher/content")}
-                className="text-sm font-medium text-[#2563EB] hover:underline"
+                className="text-sm font-medium text-[var(--sp-brand-text)] hover:underline"
               >
                 View all topics →
               </Link>
@@ -364,7 +364,7 @@ export function TeacherDashboardPage({
             </ul>
             <Link
               href={ctx.sitePath("teacher/content")}
-              className="mt-4 inline-block text-sm font-medium text-[#2563EB] hover:underline"
+              className="mt-4 inline-block text-sm font-medium text-[var(--sp-brand-text)] hover:underline"
             >
               View all activity →
             </Link>
@@ -411,14 +411,14 @@ export function TeacherDashboardPage({
               <li>
                 <Link
                   href={ctx.sitePath("teacher/classwork?tab=quizzes")}
-                  className="flex items-start gap-3 rounded-xl border border-[#BFDBFE] bg-[#EFF6FF] px-3.5 py-3 hover:opacity-95"
+                  className="flex items-start gap-3 rounded-xl border border-[var(--sp-brand-border)] bg-[var(--sp-brand-soft)] px-3.5 py-3 hover:opacity-95"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#DBEAFE] text-[#2563EB]">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--sp-brand-soft-2)] text-[var(--sp-brand-text)]">
                     <Calendar className="h-4 w-4" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-[#111827]">Quiz Results</p>
-                    <p className="text-xs text-[#1E40AF]">
+                    <p className="text-xs text-[var(--sp-brand-text)]">
                       View student exam attempts
                     </p>
                   </div>
@@ -466,9 +466,9 @@ export function TeacherDashboardPage({
                 href={ctx.sitePath("teacher/announcements")}
                 label="Create Announcement"
                 icon={<Megaphone className="h-4 w-4" />}
-                tint="#EFF6FF"
-                border="#93C5FD"
-                text="#1D4ED8"
+                tint="var(--sp-brand-soft)"
+                border="var(--sp-brand-border)"
+                text="var(--sp-brand-text)"
               />
               <QuickAction
                 href={ctx.sitePath("teacher/content")}

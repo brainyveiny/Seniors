@@ -179,7 +179,7 @@ export function SeniorsHeaderActions({
                           ? "school-admin/enquiries"
                           : "student/homework",
                     )}
-                    className="text-xs font-semibold text-[#2563EB]"
+                    className="text-xs font-semibold text-[var(--sp-brand-text)]"
                     onClick={() => setNotifOpen(false)}
                   >
                     {apiRole === "teacher"

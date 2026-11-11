@@ -97,6 +97,6 @@ export function daysLeftPill(daysLeft: number) {
   }
   return {
     label: `${daysLeft}d left`,
-    className: "bg-[#E8F0FE] text-[#1a4696]",
+    className: "bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]",
   };
 }

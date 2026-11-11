@@ -46,10 +46,10 @@ import {
 import { ACADEMY_IMAGE_ACCEPT } from "@/shared/lib/academy-image-limits";
 
 const INPUT =
-  "w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none";
+  "w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[var(--sp-brand)] focus:outline-none";
 const LABEL = "mb-1 block text-xs font-medium text-[#6B7280]";
 const BTN_PRIMARY =
-  "rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60";
+  "rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60";
 const BTN_GHOST =
   "inline-flex items-center gap-1 rounded-lg border border-[#E5E7EB] bg-white px-3 py-1.5 text-xs font-medium text-[#374151] hover:bg-[#F9FAFB] disabled:opacity-60";
 const BTN_DANGER =
@@ -130,7 +130,7 @@ function SubjectField({
             <span className={LABEL}>Subjects</span>
             <button
               type="button"
-              className="text-xs font-semibold text-[#2563EB] hover:underline"
+              className="text-xs font-semibold text-[var(--sp-brand-text)] hover:underline"
               onClick={() => onChange(allSelected ? [] : [...catalog])}
             >
               {allSelected ? "Clear all" : "Select all"}
@@ -146,7 +146,7 @@ function SubjectField({
                 >
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                    className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                     checked={checked}
                     onChange={() => toggle(name)}
                   />
@@ -483,7 +483,7 @@ function TeacherAssignmentBadges({
             {group.subjects.map((subject) => (
               <span
                 key={`${key}-${subject}`}
-                className="rounded-full bg-[#EFF6FF] px-2 py-0.5 text-xs font-medium text-[#1D4ED8]"
+                className="rounded-full bg-[var(--sp-brand-soft)] px-2 py-0.5 text-xs font-medium text-[var(--sp-brand-text)]"
               >
                 {subject}
               </span>
@@ -529,7 +529,7 @@ function AssignmentPicker({
   }
 
   return (
-    <div className="space-y-3 rounded-2xl border border-[#DBEAFE] bg-[#F8FAFF] p-4">
+    <div className="space-y-3 rounded-2xl border border-[var(--sp-brand-border)] bg-[#F8FAFF] p-4">
       <div>
         <p className="text-sm font-bold text-[#111827]">2. What will they teach?</p>
         <p className="mt-1 text-xs text-[#6B7280]">
@@ -556,7 +556,7 @@ function AssignmentPicker({
                   <p className="text-sm font-semibold text-[#111827]">
                     {klass.name} {klass.section}
                     {selectedCount > 0 ? (
-                      <span className="ml-2 text-xs font-medium text-[#2563EB]">
+                      <span className="ml-2 text-xs font-medium text-[var(--sp-brand-text)]">
                         {selectedCount} selected
                       </span>
                     ) : null}
@@ -564,7 +564,7 @@ function AssignmentPicker({
                   {classSubjects.length > 0 ? (
                     <button
                       type="button"
-                      className="text-xs font-semibold text-[#2563EB] hover:underline"
+                      className="text-xs font-semibold text-[var(--sp-brand-text)] hover:underline"
                       onClick={() => toggleClass(klass.id, classSubjects)}
                     >
                       {allOn ? "Clear" : "Select all"}
@@ -582,8 +582,8 @@ function AssignmentPicker({
                           key={subject.id}
                           className={
                             checked
-                              ? "inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-[#2563EB] px-3 py-1.5 text-xs font-semibold text-white"
-                              : "inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-1.5 text-xs font-medium text-[#374151] hover:border-[#2563EB]"
+                              ? "inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-[var(--sp-brand)] px-3 py-1.5 text-xs font-semibold text-[var(--sp-on-brand)]"
+                              : "inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-[#E5E7EB] bg-[#F9FAFB] px-3 py-1.5 text-xs font-medium text-[#374151] hover:border-[var(--sp-brand)]"
                           }
                         >
                           <input
@@ -1319,7 +1319,7 @@ function TeachersPanel({ data }: { data: TeachersData }) {
               <th className="w-10 px-4 py-3">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                  className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                   checked={allSelected}
                   onChange={toggleAllTeachers}
                   aria-label="Select all teachers"
@@ -1337,14 +1337,14 @@ function TeachersPanel({ data }: { data: TeachersData }) {
                 key={t.id}
                 className={
                   selectedIds.includes(t.id)
-                    ? "border-t border-[#E5E7EB] bg-[#EFF6FF]/50"
+                    ? "border-t border-[#E5E7EB] bg-[var(--sp-brand-soft)]/50"
                     : "border-t border-[#E5E7EB]"
                 }
               >
                 <td className="px-4 py-3">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                    className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                     checked={selectedIds.includes(t.id)}
                     onChange={() => toggleTeacher(t.id)}
                     aria-label={`Select ${t.fullName}`}
@@ -1926,7 +1926,7 @@ function StudentsPanel({ data }: { data: StudentsData }) {
                 <th className="w-10 px-4 py-3">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                    className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                     checked={allSelected}
                     onChange={toggleAllStudents}
                     aria-label="Select all students"
@@ -1943,13 +1943,13 @@ function StudentsPanel({ data }: { data: StudentsData }) {
                 <tr
                   key={s.id}
                   className={`border-t border-[#E5E7EB] ${
-                    selectedIds.includes(s.id) ? "bg-[#EFF6FF]" : ""
+                    selectedIds.includes(s.id) ? "bg-[var(--sp-brand-soft)]" : ""
                   }`}
                 >
                   <td className="px-4 py-3">
                     <input
                       type="checkbox"
-                      className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                      className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                       checked={selectedIds.includes(s.id)}
                       onChange={() => toggleStudent(s.id)}
                       aria-label={`Select ${s.fullName}`}
@@ -2026,7 +2026,7 @@ function ChildPicker({
         >
           <input
             type="checkbox"
-            className="mt-0.5 h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+            className="mt-0.5 h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
             checked={selectedIds.includes(student.id)}
             onChange={() => toggle(student.id)}
           />
@@ -2497,7 +2497,7 @@ function ParentsPanel({ data }: { data: ParentsData }) {
                 onChange={(childStudentIds) => setForm({ ...form, childStudentIds })}
               />
               {form.childStudentIds.length > 0 ? (
-                <p className="mt-2 text-xs font-medium text-[#2563EB]">
+                <p className="mt-2 text-xs font-medium text-[var(--sp-brand-text)]">
                   {form.childStudentIds.length} child
                   {form.childStudentIds.length === 1 ? "" : "ren"} selected
                 </p>
@@ -2576,7 +2576,7 @@ function ParentsPanel({ data }: { data: ParentsData }) {
                 onChange={(childStudentIds) => setEditForm({ ...editForm, childStudentIds })}
               />
               {editForm.childStudentIds.length > 0 ? (
-                <p className="mt-2 text-xs font-medium text-[#2563EB]">
+                <p className="mt-2 text-xs font-medium text-[var(--sp-brand-text)]">
                   {editForm.childStudentIds.length} child
                   {editForm.childStudentIds.length === 1 ? "" : "ren"} selected
                 </p>
@@ -2608,7 +2608,7 @@ function ParentsPanel({ data }: { data: ParentsData }) {
                 <th className="w-10 px-4 py-3">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                    className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                     checked={allSelected}
                     onChange={toggleAllParents}
                     aria-label="Select all parents"
@@ -2625,13 +2625,13 @@ function ParentsPanel({ data }: { data: ParentsData }) {
                 <tr
                   key={p.id}
                   className={`border-t border-[#E5E7EB] ${
-                    selectedIds.includes(p.id) ? "bg-[#EFF6FF]" : ""
+                    selectedIds.includes(p.id) ? "bg-[var(--sp-brand-soft)]" : ""
                   }`}
                 >
                   <td className="px-4 py-3">
                     <input
                       type="checkbox"
-                      className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                      className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                       checked={selectedIds.includes(p.id)}
                       onChange={() => toggleParent(p.id)}
                       aria-label={`Select ${p.fullName}`}
@@ -2648,7 +2648,7 @@ function ParentsPanel({ data }: { data: ParentsData }) {
                         {p.children.map((c) => (
                           <span
                             key={c.id}
-                            className="rounded-full bg-[#EFF6FF] px-2.5 py-0.5 text-xs font-medium text-[#1D4ED8]"
+                            className="rounded-full bg-[var(--sp-brand-soft)] px-2.5 py-0.5 text-xs font-medium text-[var(--sp-brand-text)]"
                           >
                             {c.name}
                           </span>
@@ -2850,7 +2850,7 @@ function ContentPanel({ data }: { data: ContentData }) {
                 onClick={() => setTeacherId("")}
                 className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-left ${
                   teacherId === ""
-                    ? "border-[#2563EB] bg-[#EFF6FF] shadow-sm"
+                    ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)] shadow-sm"
                     : "border-[#E5E7EB] bg-white hover:bg-[#F8FAFC]"
                 }`}
               >
@@ -2873,7 +2873,7 @@ function ContentPanel({ data }: { data: ContentData }) {
                     onClick={() => setTeacherId(active ? "" : teacher.id)}
                     className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-left ${
                       active
-                        ? "border-[#2563EB] bg-[#EFF6FF] shadow-sm"
+                        ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)] shadow-sm"
                         : "border-[#E5E7EB] bg-white hover:bg-[#F8FAFC]"
                     }`}
                   >
@@ -2913,7 +2913,7 @@ function ContentPanel({ data }: { data: ContentData }) {
             onClick={() => setStatusFilter(id)}
             className={`rounded-xl border px-3 py-2.5 text-left ${
               statusFilter === id
-                ? "border-[#2563EB] bg-[#EFF6FF]"
+                ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)]"
                 : "border-[#E5E7EB] bg-white hover:bg-[#F8FAFC]"
             }`}
           >
@@ -2959,7 +2959,7 @@ function ContentPanel({ data }: { data: ContentData }) {
               <SeniorsCard key={subject}>
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-2">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#EFF6FF] text-[#2563EB]">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]">
                       <BookOpen className="h-4 w-4" />
                     </span>
                     <div className="min-w-0">
@@ -3618,7 +3618,7 @@ function ClassesPanel({ data }: { data: ClassesData }) {
               <th className="w-10 px-4 py-3">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                  className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                   checked={allSelected}
                   onChange={toggleAllClasses}
                   aria-label="Select all classes"
@@ -3637,14 +3637,14 @@ function ClassesPanel({ data }: { data: ClassesData }) {
                 key={c.id}
                 className={
                   selectedIds.includes(c.id)
-                    ? "border-t border-[#E5E7EB] bg-[#EFF6FF]/50"
+                    ? "border-t border-[#E5E7EB] bg-[var(--sp-brand-soft)]/50"
                     : "border-t border-[#E5E7EB]"
                 }
               >
                 <td className="px-4 py-3">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                    className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                     checked={selectedIds.includes(c.id)}
                     onChange={() => toggleClass(c.id)}
                     aria-label={`Select ${c.name} ${c.section}`}
@@ -3663,7 +3663,7 @@ function ClassesPanel({ data }: { data: ClassesData }) {
                       {c.subjects.map((s) => (
                         <span
                           key={s.id}
-                          className="inline-flex items-center gap-1 rounded-full bg-[#EFF6FF] px-2 py-0.5 text-xs font-medium text-[#1D4ED8]"
+                          className="inline-flex items-center gap-1 rounded-full bg-[var(--sp-brand-soft)] px-2 py-0.5 text-xs font-medium text-[var(--sp-brand-text)]"
                         >
                           {s.name}
                           <button
@@ -4106,7 +4106,7 @@ function ExamsPanel({ data }: { data: ExamsData }) {
                   <th className="w-10 px-4 py-3">
                     <input
                       type="checkbox"
-                      className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                      className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                       checked={allSelected}
                       onChange={toggleAllExams}
                       aria-label="Select all exams"
@@ -4122,12 +4122,12 @@ function ExamsPanel({ data }: { data: ExamsData }) {
                 {items.map((exam) => (
                   <tr
                     key={exam.id}
-                    className={selectedIds.includes(exam.id) ? "bg-[#EFF6FF]" : undefined}
+                    className={selectedIds.includes(exam.id) ? "bg-[var(--sp-brand-soft)]" : undefined}
                   >
                     <td className="px-4 py-3">
                       <input
                         type="checkbox"
-                        className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                        className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                         checked={selectedIds.includes(exam.id)}
                         onChange={() => toggleExam(exam.id)}
                         aria-label={`Select ${exam.title}`}
@@ -4333,13 +4333,13 @@ function AudiencePicker({
               onClick={() => onChange({ ...audience, audienceType: option.value })}
               className={`rounded-xl border p-3 text-left transition ${
                 active
-                  ? "border-[#2563EB] bg-[#EFF6FF] shadow-sm"
+                  ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)] shadow-sm"
                   : "border-[#E5E7EB] bg-white hover:bg-[#F8FAFC]"
               }`}
             >
               <span
                 className={`mb-2 flex h-8 w-8 items-center justify-center rounded-lg ${
-                  active ? "bg-white text-[#2563EB]" : "bg-[#F3F4F6] text-[#6B7280]"
+                  active ? "bg-white text-[var(--sp-brand-text)]" : "bg-[#F3F4F6] text-[#6B7280]"
                 }`}
               >
                 <Icon className="h-4 w-4" />
@@ -4372,7 +4372,7 @@ function AudiencePicker({
                   }
                   className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium ${
                     on
-                      ? "border-[#2563EB] bg-white text-[#1D4ED8]"
+                      ? "border-[var(--sp-brand)] bg-white text-[var(--sp-brand-text)]"
                       : "border-[#E5E7EB] bg-white text-[#6B7280]"
                   }`}
                 >
@@ -4390,7 +4390,7 @@ function AudiencePicker({
                   onClick={() => onChange({ ...audience, limitClasses: false, classIds: [] })}
                   className={`rounded-full px-3 py-1 text-xs font-semibold ${
                     !audience.limitClasses
-                      ? "bg-[#2563EB] text-white"
+                      ? "bg-[var(--sp-brand)] text-[var(--sp-on-brand)]"
                       : "bg-white text-[#6B7280] ring-1 ring-[#E5E7EB]"
                   }`}
                 >
@@ -4401,7 +4401,7 @@ function AudiencePicker({
                   onClick={() => onChange({ ...audience, limitClasses: true })}
                   className={`rounded-full px-3 py-1 text-xs font-semibold ${
                     audience.limitClasses
-                      ? "bg-[#2563EB] text-white"
+                      ? "bg-[var(--sp-brand)] text-[var(--sp-on-brand)]"
                       : "bg-white text-[#6B7280] ring-1 ring-[#E5E7EB]"
                   }`}
                 >
@@ -4424,7 +4424,7 @@ function AudiencePicker({
                         }
                         className={`rounded-full border px-3 py-1 text-xs font-medium ${
                           on
-                            ? "border-[#2563EB] bg-[#EFF6FF] text-[#1D4ED8]"
+                            ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]"
                             : "border-[#E5E7EB] bg-white text-[#6B7280]"
                         }`}
                       >
@@ -4446,7 +4446,7 @@ function AudiencePicker({
               {audience.userIds.map((id) => (
                 <span
                   key={id}
-                  className="inline-flex items-center gap-1 rounded-full bg-[#EFF6FF] px-2.5 py-1 text-xs font-medium text-[#1D4ED8]"
+                  className="inline-flex items-center gap-1 rounded-full bg-[var(--sp-brand-soft)] px-2.5 py-1 text-xs font-medium text-[var(--sp-brand-text)]"
                 >
                   {personName(id)}
                   <button
@@ -4516,7 +4516,7 @@ function AudiencePicker({
                     >
                       <input
                         type="checkbox"
-                        className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                        className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                         checked={audience.userIds.includes(person.id)}
                         onChange={() =>
                           onChange({
@@ -4541,7 +4541,7 @@ function AudiencePicker({
         </div>
       ) : null}
 
-      <div className="rounded-xl border border-[#DBEAFE] bg-[#EFF6FF] px-3 py-2 text-sm text-[#1D4ED8]">
+      <div className="rounded-xl border border-[var(--sp-brand-border)] bg-[var(--sp-brand-soft)] px-3 py-2 text-sm text-[var(--sp-brand-text)]">
         {previewText()}
       </div>
     </div>
@@ -4996,7 +4996,7 @@ function AnnouncementsPanel({ data }: { data: AnnouncementsData }) {
                   <th className="w-10 px-4 py-3">
                     <input
                       type="checkbox"
-                      className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                      className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                       checked={allSelected}
                       onChange={toggleAll}
                       aria-label="Select all announcements"
@@ -5012,12 +5012,12 @@ function AnnouncementsPanel({ data }: { data: AnnouncementsData }) {
                 {filtered.map((item) => (
                   <tr
                     key={item.id}
-                    className={selectedIds.includes(item.id) ? "bg-[#EFF6FF]" : undefined}
+                    className={selectedIds.includes(item.id) ? "bg-[var(--sp-brand-soft)]" : undefined}
                   >
                     <td className="px-4 py-3">
                       <input
                         type="checkbox"
-                        className="h-4 w-4 rounded border-[#D1D5DB] text-[#2563EB] focus:ring-[#2563EB]"
+                        className="h-4 w-4 rounded border-[#D1D5DB] text-[var(--sp-brand-text)] focus:ring-[var(--sp-brand)]"
                         checked={selectedIds.includes(item.id)}
                         onChange={() => toggleOne(item.id)}
                         aria-label={`Select ${item.title}`}
@@ -5028,7 +5028,7 @@ function AnnouncementsPanel({ data }: { data: AnnouncementsData }) {
                       <p className="text-xs text-[#6B7280]">{announcementSnippet(item.body)}</p>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="inline-flex rounded-full bg-[#EFF6FF] px-2.5 py-0.5 text-xs font-medium text-[#1D4ED8]">
+                      <span className="inline-flex rounded-full bg-[var(--sp-brand-soft)] px-2.5 py-0.5 text-xs font-medium text-[var(--sp-brand-text)]">
                         {announcementAudienceLabel(item, directory)}
                       </span>
                     </td>
@@ -5243,7 +5243,7 @@ function statusPill(status: string) {
     );
   }
   return (
-    <span className="rounded-full bg-[#DBEAFE] px-2.5 py-1 text-xs font-semibold text-[#1D4ED8]">
+    <span className="rounded-full bg-[var(--sp-brand-soft-2)] px-2.5 py-1 text-xs font-semibold text-[var(--sp-brand-text)]">
       Pending
     </span>
   );
@@ -5482,7 +5482,7 @@ function EnquiriesPanel({ data }: { data: EnquiriesData }) {
           >
             <div className="flex items-start justify-between gap-4 border-b border-[#E5E7EB] px-5 py-4 sm:px-6">
               <div className="flex min-w-0 items-start gap-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EFF6FF] text-[#2563EB]">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]">
                   <UserRound className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
@@ -5551,7 +5551,7 @@ function EnquiriesPanel({ data }: { data: EnquiriesData }) {
                       Access to assign
                     </p>
                     {reviewing.role === "student" ? (
-                      <div className="grid gap-3 rounded-2xl border border-[#DBEAFE] bg-[#F8FAFF] p-4 sm:grid-cols-2">
+                      <div className="grid gap-3 rounded-2xl border border-[var(--sp-brand-border)] bg-[#F8FAFF] p-4 sm:grid-cols-2">
                         <Field label="Confirm class">
                           <select
                             className={INPUT}

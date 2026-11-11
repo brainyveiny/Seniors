@@ -7,7 +7,9 @@ import {
   useEffect,
   useMemo,
   useState,
+  type CSSProperties,
 } from "react";
+import { seniorsBrandCssVars } from "@/shared/lib/seniors-brand";
 
 export type SeniorsThemeMode = "light" | "dark";
 
@@ -18,6 +20,8 @@ type SeniorsThemeContextValue = {
   isDark: boolean;
   setTheme: (mode: SeniorsThemeMode) => void;
   toggleTheme: () => void;
+  /** School brand CSS variables -spread onto body-mounted portals, which don't inherit them. */
+  brandStyle: CSSProperties;
 };
 
 const SeniorsThemeContext = createContext<SeniorsThemeContextValue | null>(null);
@@ -43,8 +47,10 @@ function persistTheme(mode: SeniorsThemeMode) {
 
 export function SeniorsThemeProvider({
   children,
+  brandHex,
 }: {
   children: React.ReactNode;
+  brandHex?: string;
 }) {
   // Always start light to avoid SSR/client hydration mismatch, then sync.
   const [theme, setThemeState] = useState<SeniorsThemeMode>("light");
@@ -66,14 +72,20 @@ export function SeniorsThemeProvider({
     });
   }, []);
 
+  const brandStyle = useMemo(
+    () => seniorsBrandCssVars(brandHex, theme === "dark"),
+    [brandHex, theme],
+  );
+
   const value = useMemo(
     () => ({
       theme,
       isDark: theme === "dark",
       setTheme,
       toggleTheme,
+      brandStyle,
     }),
-    [theme, setTheme, toggleTheme],
+    [theme, setTheme, toggleTheme, brandStyle],
   );
 
   return (
@@ -85,11 +97,12 @@ export function SeniorsThemeProvider({
             : "seniors-portal h-dvh overflow-hidden"
         }
         data-theme={theme}
-        style={
-          theme === "dark"
+        style={{
+          ...brandStyle,
+          ...(theme === "dark"
             ? { backgroundColor: "#000000", color: "#e5e5e5" }
-            : { backgroundColor: "#f8fafd", color: "#1f2937" }
-        }
+            : { backgroundColor: "#f8fafd", color: "#1f2937" }),
+        }}
       >
         {children}
       </div>
@@ -105,6 +118,7 @@ export function useSeniorsTheme() {
       isDark: false,
       setTheme: (_mode: SeniorsThemeMode) => {},
       toggleTheme: () => {},
+      brandStyle: {} as CSSProperties,
     };
   }
   return ctx;

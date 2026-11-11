@@ -12,9 +12,9 @@ export function TeacherTopicPreviewClient({ topic }: { topic: TopicPageData }) {
 
   return (
     <>
-      <SeniorsCard className="mb-4 border-[#DBEAFE] bg-[#EFF6FF] p-4">
-        <p className="text-sm font-semibold text-[#1D4ED8]">Draft Preview</p>
-        <p className="mt-1 text-sm text-[#1E3A8A]">
+      <SeniorsCard className="mb-4 border-[var(--sp-brand-border)] bg-[var(--sp-brand-soft)] p-4">
+        <p className="text-sm font-semibold text-[var(--sp-brand-text)]">Draft Preview</p>
+        <p className="mt-1 text-sm text-[var(--sp-brand-text)]">
           Yeh screen student page jaise render hoti hai, lekin abhi draft data dikha rahi hai.
           Publish karne ke baad hi students ko live update milega.
         </p>

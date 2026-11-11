@@ -47,14 +47,14 @@ function Sparkline({ color }: { color: string }) {
     <svg width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden>
       <path
         d="M1 20 C10 18, 14 8, 22 12 C30 16, 34 6, 42 10 C50 14, 54 4, 62 8 C66 10, 68 6, 71 4"
-        stroke={color}
+        style={{ stroke: color }}
         strokeWidth="2"
         strokeLinecap="round"
         fill="none"
       />
       <path
         d="M1 20 C10 18, 14 8, 22 12 C30 16, 34 6, 42 10 C50 14, 54 4, 62 8 C66 10, 68 6, 71 4 L71 28 L1 28 Z"
-        fill={color}
+        style={{ fill: color }}
         opacity="0.12"
       />
     </svg>
@@ -62,7 +62,7 @@ function Sparkline({ color }: { color: string }) {
 }
 
 const QUICK_ACCESS = [
-  { href: "parent/profile", label: "Profile", icon: UserRound, bg: "#DBEAFE", color: "#2563EB" },
+  { href: "parent/profile", label: "Profile", icon: UserRound, bg: "var(--sp-brand-soft-2)", color: "var(--sp-brand-text)" },
   { href: "parent/homework", label: "Classwork", icon: ClipboardList, bg: "#FCE7F3", color: "#DB2777" },
   { href: "parent/fees", label: "Fees", icon: CreditCard, bg: "#FEE2E2", color: "#B91C1C" },
   { href: "parent/leave", label: "Apply Leave", icon: Calendar, bg: "#FFEDD5", color: "#EA580C" },
@@ -179,7 +179,7 @@ export function ParentDashboardPage({
                 ({data.progress.topicsCompleted} / {data.progress.topicsTotal} Topics Completed)
               </p>
             </div>
-            <Sparkline color="#2563EB" />
+            <Sparkline color="var(--sp-brand)" />
           </div>
         </SeniorsCard>
 
@@ -212,14 +212,14 @@ export function ParentDashboardPage({
         </SeniorsCard>
 
         <Link href={ctx.sitePath(`parent/homework${activeId ? `?child=${activeId}` : ""}`)}>
-          <SeniorsCard pastel="orange" className="p-4 transition hover:border-[#2563EB]">
+          <SeniorsCard pastel="orange" className="p-4 transition hover:border-[var(--sp-brand)]">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-xs font-medium text-[#6B7280]">Homework Due</p>
                 <p className="mt-1.5 text-3xl font-bold tracking-tight text-[#111827]">
                   {data.homeworkDue}
                 </p>
-                <p className="mt-1 text-xs text-[#2563EB]">View classwork →</p>
+                <p className="mt-1 text-xs text-[var(--sp-brand-text)]">View classwork →</p>
               </div>
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#EA580C]">
                 <ClipboardList className="h-5 w-5" />
@@ -292,7 +292,7 @@ export function ParentDashboardPage({
                   </div>
                   <div className="h-2 overflow-hidden rounded-full bg-[#F3F4F6]">
                     <div
-                      className="h-full rounded-full bg-[#2563EB]"
+                      className="h-full rounded-full bg-[var(--sp-brand)]"
                       style={{ width: `${s.percent}%` }}
                     />
                   </div>
@@ -357,14 +357,14 @@ export function ParentDashboardPage({
           </ul>
           <Link
             href={ctx.sitePath("parent/announcements")}
-            className="mt-4 inline-block text-sm font-medium text-[#2563EB] hover:underline"
+            className="mt-4 inline-block text-sm font-medium text-[var(--sp-brand-text)] hover:underline"
           >
             View all →
           </Link>
         </SeniorsCard>
       </div>
 
-      <div className="flex items-start gap-2 rounded-lg bg-[#EFF6FF] p-4 text-sm text-[#1E40AF]">
+      <div className="flex items-start gap-2 rounded-lg bg-[var(--sp-brand-soft)] p-4 text-sm text-[var(--sp-brand-text)]">
         <Info className="mt-0.5 h-4 w-4 shrink-0" />
         Progress reflects topics your child has completed and quiz scores from school content.
       </div>

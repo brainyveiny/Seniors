@@ -129,7 +129,7 @@ export function ParentLeavePage({
           <span className="text-[#6B7280]">Reason</span>
           <textarea className="mt-1 w-full rounded-lg border px-3 py-2" rows={3} value={reason} onChange={(e) => setReason(e.target.value)} />
         </label>
-        <button type="button" onClick={submit} disabled={saving} className="mt-4 rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60">
+        <button type="button" onClick={submit} disabled={saving} className="mt-4 rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] disabled:opacity-60">
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : "Submit request"}
         </button>
         {message ? <p className="mt-3 text-sm text-[#374151]">{message}</p> : null}
@@ -148,7 +148,7 @@ export function ParentLeavePage({
                   <StatusBadge status={r.status} />
                 </div>
                 <p className="mt-1 text-sm text-[#6B7280]">{r.reason}</p>
-                {r.adminNote ? <p className="mt-1 text-xs text-[#2563EB]">School: {r.adminNote}</p> : null}
+                {r.adminNote ? <p className="mt-1 text-xs text-[var(--sp-brand-text)]">School: {r.adminNote}</p> : null}
               </li>
             ))
           )}
@@ -215,7 +215,7 @@ export function ParentFeesPage({
                 </div>
               </div>
               {fee.status === "due" && fee.paymentLink ? (
-                <a href={fee.paymentLink} target="_blank" rel="noreferrer" className="mt-3 inline-block rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white">
+                <a href={fee.paymentLink} target="_blank" rel="noreferrer" className="mt-3 inline-block rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)]">
                   Make payment
                 </a>
               ) : null}
@@ -316,7 +316,7 @@ export function ParentTransportPage({
           </select>
           <input className="rounded-lg border px-3 py-2 text-sm" placeholder="Preferred stop name" value={stopName} onChange={(e) => setStopName(e.target.value)} />
           <textarea className="rounded-lg border px-3 py-2 text-sm" placeholder="Note for school admin" rows={2} value={note} onChange={(e) => setNote(e.target.value)} />
-          <button type="button" onClick={submit} disabled={saving} className="rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60">
+          <button type="button" onClick={submit} disabled={saving} className="rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] disabled:opacity-60">
             {saving ? "Submitting…" : "Request update"}
           </button>
           {message ? <p className="text-sm text-[#374151]">{message}</p> : null}
@@ -426,7 +426,7 @@ export function ParentCatalogPage({
       ) : (
         <SeniorsCard className="p-5">
           <div className="flex items-center gap-3">
-            <meta.icon className="h-6 w-6 text-[#2563EB]" />
+            <meta.icon className="h-6 w-6 text-[var(--sp-brand-text)]" />
             <div>
               <h3 className="font-bold text-[#111827]">{catalog.title}</h3>
               {catalog.academicYear ? <p className="text-sm text-[#6B7280]">{catalog.academicYear}</p> : null}
@@ -478,7 +478,7 @@ export function ParentCatalogPage({
               </li>
             ))}
           </ul>
-          <button type="button" onClick={submit} disabled={saving} className="mt-4 rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60">
+          <button type="button" onClick={submit} disabled={saving} className="mt-4 rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] disabled:opacity-60">
             {saving ? "Submitting…" : "Submit order"}
           </button>
           {message ? <p className="mt-2 text-sm">{message}</p> : null}

@@ -250,7 +250,7 @@ function TopicDiagramCarousel({
               }}
               className={cn(
                 "h-1.5 rounded-full transition",
-                i === safeIndex ? "w-4 bg-[#1a4696]" : "w-1.5 bg-[#D1D5DB]",
+                i === safeIndex ? "w-4 bg-[var(--sp-brand)]" : "w-1.5 bg-[#D1D5DB]",
               )}
               aria-label={`Show diagram ${i + 1}`}
             />
@@ -394,7 +394,7 @@ function TopicFocusOverlay({
             {topic.nextSlug ? (
               <Link
                 href={topicHref(topic.nextSlug)}
-                className="rounded-xl bg-[#1a4696] px-3 py-2 text-sm font-semibold text-white hover:bg-[#153a7d]"
+                className="rounded-xl bg-[var(--sp-brand)] px-3 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[#153a7d]"
               >
                 Next →
               </Link>
@@ -690,7 +690,7 @@ export function StudentTopicPage({
   const navBtnBase =
     "group relative inline-flex min-w-[7.5rem] flex-col items-start gap-0.5 rounded-xl border px-3 py-2 text-left transition active:scale-[0.98]";
   const navBtnEnabled =
-    "border-[#E8EEF5] bg-white hover:border-[#1a4696]/25 hover:bg-[#F3F6FB] hover:shadow-sm";
+    "border-[#E8EEF5] bg-white hover:border-[var(--sp-brand)]/25 hover:bg-[#F3F6FB] hover:shadow-sm";
   const navBtnDisabled =
     "cursor-not-allowed border-[#F3F4F6] bg-[#FAFAFA] opacity-50";
 
@@ -708,7 +708,7 @@ export function StudentTopicPage({
           <nav className="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
             <Link
               href={mode === "teacher-preview" ? ctx.sitePath("teacher/content") : ctx.sitePath("student/learn")}
-              className="font-medium hover:text-[#1a4696]"
+              className="font-medium hover:text-[var(--sp-brand-text)]"
             >
               {mode === "teacher-preview" ? "Topic Studio" : "Learn"}
             </Link>
@@ -794,7 +794,7 @@ export function StudentTopicPage({
             <button
               type="button"
               onClick={() => setFocusOpen(true)}
-              className="inline-flex h-auto w-11 flex-col items-center justify-center gap-0.5 rounded-xl border border-[#E8EEF5] bg-white text-[#6B7280] transition hover:border-[#1a4696]/25 hover:bg-[#F3F6FB] hover:text-[#1a4696]"
+              className="inline-flex h-auto w-11 flex-col items-center justify-center gap-0.5 rounded-xl border border-[#E8EEF5] bg-white text-[#6B7280] transition hover:border-[var(--sp-brand)]/25 hover:bg-[#F3F6FB] hover:text-[var(--sp-brand-text)]"
               aria-label="Open focus mode"
               title="Focus mode (F)"
             >
@@ -868,7 +868,7 @@ export function StudentTopicPage({
                 <button
                   type="button"
                   onClick={() => setFocusOpen(true)}
-                  className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium text-[#6B7280] opacity-0 transition group-hover:opacity-100 hover:bg-[#F3F6FB] hover:text-[#1a4696]"
+                  className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium text-[#6B7280] opacity-0 transition group-hover:opacity-100 hover:bg-[#F3F6FB] hover:text-[var(--sp-brand-text)]"
                 >
                   <Maximize2 className="h-3.5 w-3.5" />
                   Expand
@@ -886,7 +886,7 @@ export function StudentTopicPage({
               <button
                 type="button"
                 onClick={() => setFocusOpen(true)}
-                className="mt-2 text-center text-[11px] text-[#9CA3AF] hover:text-[#1a4696]"
+                className="mt-2 text-center text-[11px] text-[#9CA3AF] hover:text-[var(--sp-brand-text)]"
               >
                 Tap Expand to open focus mode
               </button>
@@ -927,7 +927,7 @@ export function StudentTopicPage({
               <ContentBlock
                 key={n.id}
                 icon={FileText}
-                tint="bg-[#DBEAFE] text-[#2563EB]"
+                tint="bg-[var(--sp-brand-soft-2)] text-[var(--sp-brand-text)]"
                 title={n.title}
                 body={n.body}
                 fileUrl={n.fileUrl}
@@ -959,7 +959,7 @@ export function StudentTopicPage({
             {topic.homework.length > 0 ? (
               <StudentLiftCard className="p-5">
                 <div className="flex items-center gap-2">
-                  <ClipboardList className="h-5 w-5 text-[#1a4696]" />
+                  <ClipboardList className="h-5 w-5 text-[var(--sp-brand-text)]" />
                   <p className="font-bold text-[#111827]">Homework for this topic</p>
                 </div>
                 <ul className="mt-3 space-y-2">
@@ -967,7 +967,7 @@ export function StudentTopicPage({
                     <li key={h.id}>
                       <Link
                         href={ctx.sitePath(`student/homework/${h.id}`)}
-                        className="flex items-center justify-between gap-3 rounded-xl border border-[#E8EEF5] bg-[#F8FAFD] px-4 py-3 text-sm transition hover:border-[#1a4696]/30 hover:bg-[#E8F0FE]"
+                        className="flex items-center justify-between gap-3 rounded-xl border border-[#E8EEF5] bg-[#F8FAFD] px-4 py-3 text-sm transition hover:border-[var(--sp-brand)]/30 hover:bg-[var(--sp-brand-soft)]"
                       >
                         <span className="font-medium text-[#111827]">{h.title}</span>
                         <span className="shrink-0 text-xs text-[#6B7280]">

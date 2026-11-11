@@ -1,5 +1,6 @@
 import { hashPassword } from "@/infrastructure/auth/password";
 import { getPrismaClient } from "@/infrastructure/database/prisma";
+import { resolveSchoolBrandHex } from "@/shared/lib/seniors-brand";
 
 export function slugifySchoolCode(input: string) {
   return input
@@ -16,6 +17,9 @@ export async function createSeniorsSchool(input: {
   adminEmail: string;
   adminPassword: string;
   phone?: string;
+  primaryColor?: string;
+  city?: string;
+  contactPhone?: string;
 }) {
   const schoolName = input.schoolName.trim();
   const adminEmail = input.adminEmail.trim().toLowerCase();
@@ -42,6 +46,10 @@ export async function createSeniorsSchool(input: {
       activeTemplateId: "seniors-platform",
       initialized: true,
       isPublished: true,
+      contactName: adminName,
+      contactEmail: adminEmail,
+      contactPhone: input.contactPhone?.trim() ?? input.phone?.trim() ?? "",
+      city: input.city?.trim() ?? "",
     },
   });
 
@@ -49,7 +57,7 @@ export async function createSeniorsSchool(input: {
     data: {
       tenantId: tenant.id,
       schoolName,
-      primaryColor: "#2563EB",
+      primaryColor: resolveSchoolBrandHex(input.primaryColor),
     },
   });
 

@@ -17,6 +17,21 @@ model PlatformSuperAdmin {
   lastLoginAt  DateTime?
 }
 
+model PlatformAuditLog {
+  id         String   @id @default(cuid())
+  actorId    String
+  actorEmail String
+  action     String
+  tenantId   String?
+  tenantSlug String   @default("")
+  summary    String   @default("")
+  metadata   Json     @default("{}")
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([tenantId, createdAt])
+}
+
 model Tenant {
   id               String   @id @default(cuid())
   slug             String   @unique
@@ -34,6 +49,17 @@ model Tenant {
   activeTemplateId String?
   /// Product flags for multi-product tenants (e.g. academy, connect)
   enabledProducts        String[] @default(["academy"])
+  /// "active" | "suspended" -suspended schools cannot log in or use any panel
+  status           String   @default("active")
+  suspendedReason  String   @default("")
+  contactName      String   @default("")
+  contactEmail     String   @default("")
+  contactPhone     String   @default("")
+  city             String   @default("")
+  state            String   @default("")
+  address          String   @default("") @db.Text
+  /// Visible to platform super admins only
+  internalNotes    String   @default("") @db.Text
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
@@ -738,6 +764,7 @@ model SeniorsSchoolSettings {
   schoolName      String @default("")
   logoUrl         String @default("")
   primaryColor    String @default("#2563EB")
+  tagline         String @default("")
   markingScheme   String @default("") @db.Text
   answerFormat    String @default("") @db.Text
   academicCalendar Json  @default("[]")

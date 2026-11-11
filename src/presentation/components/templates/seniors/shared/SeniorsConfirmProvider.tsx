@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { createPortal } from "react-dom";
+import { useSeniorsTheme } from "@/presentation/components/templates/seniors/shared/SeniorsTheme";
 
 type ConfirmOptions = {
   title?: string;
@@ -47,6 +48,7 @@ export function useSeniorsConfirm() {
 }
 
 export function SeniorsConfirmProvider({ children }: { children: React.ReactNode }) {
+  const { brandStyle } = useSeniorsTheme();
   const [state, setState] = useState<ConfirmState>(CLOSED);
   const [mounted, setMounted] = useState(false);
 
@@ -86,7 +88,10 @@ export function SeniorsConfirmProvider({ children }: { children: React.ReactNode
       {children}
       {mounted && state.open
         ? createPortal(
-            <div className="seniors-theme-layer fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div
+              className="seniors-theme-layer fixed inset-0 z-[100] flex items-center justify-center p-4"
+              style={brandStyle}
+            >
               <button
                 type="button"
                 className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"

@@ -14,7 +14,7 @@ import { markStudentAnnouncementsSeen } from "@/presentation/components/template
 import { useSeniorsSite } from "@/presentation/components/website/TenantSiteShell";
 
 const FEED_TINTS = [
-  "bg-[#DBEAFE] text-[#2563EB]",
+  "bg-[var(--sp-brand-soft-2)] text-[var(--sp-brand-text)]",
   "bg-[#FCE7F3] text-[#DB2777]",
   "bg-[#DCFCE7] text-[#16A34A]",
   "bg-[#FEF3C7] text-[#D97706]",
@@ -92,7 +92,7 @@ export function StudentSchoolPage({
                           <span
                             className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide ${
                               fromSchool
-                                ? "bg-[#EFF6FF] text-[#2563EB]"
+                                ? "bg-[var(--sp-brand-soft)] text-[var(--sp-brand-text)]"
                                 : "bg-[#FDF2F8] text-[#DB2777]"
                             }`}
                           >

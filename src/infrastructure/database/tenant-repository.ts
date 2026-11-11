@@ -12,9 +12,12 @@ export type SeniorsTenantShell = {
   ownerName: string;
   brandColor: string;
   activeTemplateId: string | null;
+  status: string;
+  suspendedReason: string;
   schoolName: string | null;
   primaryColor: string | null;
   logoUrl: string | null;
+  tagline: string | null;
 };
 
 export const getSeniorsTenantShell = cache(
@@ -27,8 +30,10 @@ export const getSeniorsTenantShell = cache(
         ownerName: true,
         brandColor: true,
         activeTemplateId: true,
+        status: true,
+        suspendedReason: true,
         seniorsSchoolSettings: {
-          select: { schoolName: true, primaryColor: true, logoUrl: true },
+          select: { schoolName: true, primaryColor: true, logoUrl: true, tagline: true },
         },
       },
     });
@@ -39,9 +44,12 @@ export const getSeniorsTenantShell = cache(
       ownerName: tenant.ownerName,
       brandColor: tenant.brandColor,
       activeTemplateId: tenant.activeTemplateId,
+      status: tenant.status,
+      suspendedReason: tenant.suspendedReason,
       schoolName: tenant.seniorsSchoolSettings?.schoolName ?? null,
       primaryColor: tenant.seniorsSchoolSettings?.primaryColor ?? null,
       logoUrl: tenant.seniorsSchoolSettings?.logoUrl ?? null,
+      tagline: tenant.seniorsSchoolSettings?.tagline ?? null,
     };
   },
 );

@@ -45,14 +45,14 @@ export function SchoolAdminClassworkPanel({ data }: { data: ClassworkAdminData }
 
   return (
     <div className="space-y-6">
-      <div className="rounded-lg bg-[#EFF6FF] px-4 py-3 text-sm text-[#1E40AF]">
+      <div className="rounded-lg bg-[var(--sp-brand-soft)] px-4 py-3 text-sm text-[var(--sp-brand-text)]">
         View assignment submissions and quiz results across all classes. Teachers grade work from
         their Assignments and Exams pages.
       </div>
 
       <SeniorsCard pastel="blue" className="overflow-hidden p-0">
         <div className="flex items-center gap-2 border-b border-white/40 px-5 py-4">
-          <ClipboardList className="h-4 w-4 text-[#2563EB]" />
+          <ClipboardList className="h-4 w-4 text-[var(--sp-brand-text)]" />
           <h3 className="text-base font-bold text-[#111827]">Assignment submissions</h3>
         </div>
         {data.assignments.length === 0 ? (

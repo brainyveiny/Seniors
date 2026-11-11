@@ -233,7 +233,7 @@ export async function findJoinRequestForLogin(
       },
     },
     include: {
-      tenant: { select: { id: true, slug: true, platformName: true } },
+      tenant: { select: { id: true, slug: true, platformName: true, status: true } },
     },
     orderBy: { updatedAt: "desc" },
   });

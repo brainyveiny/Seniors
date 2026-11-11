@@ -43,7 +43,7 @@ export function SeniorsProfileDrawer({
   const [profile, setProfile] = useState<SeniorsProfilePayload | null>(cached);
   const [error, setError] = useState("");
   const [mounted, setMounted] = useState(false);
-  const { theme } = useSeniorsTheme();
+  const { theme, brandStyle } = useSeniorsTheme();
   const { confirm } = useSeniorsConfirm();
 
   useEffect(() => {
@@ -108,6 +108,7 @@ export function SeniorsProfileDrawer({
         theme === "dark" && "seniors-dark",
       )}
       data-theme={theme}
+      style={brandStyle}
       aria-hidden={!open}
     >
       <button
@@ -137,7 +138,7 @@ export function SeniorsProfileDrawer({
           style={{ borderColor: "var(--sp-border, #E8EEF5)" }}
         >
           <div className="flex items-center gap-2">
-            <User className="h-4 w-4 text-[#2563EB]" />
+            <User className="h-4 w-4 text-[var(--sp-brand-text)]" />
             <p
               className="text-sm font-bold"
               style={{ color: "var(--sp-text-strong, #111827)" }}
@@ -170,7 +171,7 @@ export function SeniorsProfileDrawer({
                 <img src={schoolLogo} alt={schoolName} className="h-full w-full object-contain" />
               </div>
             ) : null}
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#E8F0FE] text-2xl font-bold text-[#1a4696] ring-4 ring-[#EFF6FF]">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--sp-brand-soft)] text-2xl font-bold text-[var(--sp-brand-text)] ring-4 ring-[var(--sp-brand-border)]">
               {initial}
             </div>
             <p

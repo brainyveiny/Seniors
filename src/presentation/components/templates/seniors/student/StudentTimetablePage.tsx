@@ -488,7 +488,7 @@ export function StudentTimetablePage({
               <button
                 type="button"
                 onClick={() => openAddPersonal(selectedDay)}
-                className="inline-flex items-center gap-2 rounded-lg bg-[var(--sp-accent,#2563EB)] px-3.5 py-2 text-sm font-medium text-white hover:bg-[#1D4ED8]"
+                className="inline-flex items-center gap-2 rounded-lg bg-[var(--sp-accent,#2563EB)] px-3.5 py-2 text-sm font-medium text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)]"
               >
                 <Plus className="h-4 w-4" />
                 New entry
@@ -1025,7 +1025,7 @@ export function StudentTimetablePage({
                   type="button"
                   disabled={saving}
                   onClick={() => void saveDraft()}
-                  className="rounded-lg bg-[var(--sp-accent,#2563EB)] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60"
+                  className="rounded-lg bg-[var(--sp-accent,#2563EB)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60"
                 >
                   {saving ? "Saving…" : "Save"}
                 </button>

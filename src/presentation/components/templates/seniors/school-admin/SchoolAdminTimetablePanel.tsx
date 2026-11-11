@@ -20,9 +20,9 @@ import { writeSeniorsCachedJson } from "@/presentation/components/templates/seni
 import { cn } from "@/shared/lib/utils";
 
 const INPUT =
-  "w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none";
+  "w-full rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[var(--sp-brand)] focus:outline-none";
 const BTN_PRIMARY =
-  "inline-flex items-center justify-center gap-2 rounded-lg bg-[#2563EB] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-lg bg-[var(--sp-brand)] px-4 py-2.5 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60";
 const BTN_GHOST =
   "inline-flex items-center gap-1.5 rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm font-medium text-[#374151] hover:bg-[#F9FAFB] disabled:opacity-60";
 const BTN_DANGER =
@@ -399,7 +399,7 @@ export function SchoolAdminTimetablePanel({ data }: { data: TimetableAdminData }
 
       <SeniorsCard className="p-5">
         <div className="flex items-center gap-2">
-          <FileSpreadsheet className="h-4 w-4 text-[#2563EB]" />
+          <FileSpreadsheet className="h-4 w-4 text-[var(--sp-brand-text)]" />
           <h2 className="text-sm font-semibold text-[#111827]">Upload CSV file</h2>
         </div>
         <p className="mt-1 text-xs text-[#6B7280]">
@@ -436,12 +436,12 @@ export function SchoolAdminTimetablePanel({ data }: { data: TimetableAdminData }
           className={cn(
             "mt-4 flex w-full flex-col items-center justify-center rounded-xl border border-dashed px-4 py-10 text-center transition",
             dragOver
-              ? "border-[#2563EB] bg-[#EFF6FF]"
-              : "border-[#D1D5DB] bg-[#F9FAFB] hover:border-[#2563EB] hover:bg-[#EFF6FF]/40",
+              ? "border-[var(--sp-brand)] bg-[var(--sp-brand-soft)]"
+              : "border-[#D1D5DB] bg-[#F9FAFB] hover:border-[var(--sp-brand)] hover:bg-[var(--sp-brand-soft)]/40",
             saving && "opacity-60",
           )}
         >
-          <Upload className="h-6 w-6 text-[#2563EB]" />
+          <Upload className="h-6 w-6 text-[var(--sp-brand-text)]" />
           <p className="mt-3 text-sm font-semibold text-[#111827]">
             {saving ? "Uploading…" : "Drop CSV here or click to choose"}
           </p>
@@ -453,7 +453,7 @@ export function SchoolAdminTimetablePanel({ data }: { data: TimetableAdminData }
 
       <SeniorsCard className="p-5">
         <div className="flex items-center gap-2">
-          <Plus className="h-4 w-4 text-[#2563EB]" />
+          <Plus className="h-4 w-4 text-[var(--sp-brand-text)]" />
           <h2 className="text-sm font-semibold text-[#111827]">Add one period</h2>
         </div>
         <p className="mt-1 text-xs text-[#6B7280]">
@@ -542,7 +542,7 @@ export function SchoolAdminTimetablePanel({ data }: { data: TimetableAdminData }
       <SeniorsCard className="overflow-hidden p-0">
         <div className="flex items-center justify-between gap-3 border-b border-[#E5E7EB] px-5 py-3.5">
           <div className="flex items-center gap-2">
-            <CalendarDays className="h-4 w-4 text-[#2563EB]" />
+            <CalendarDays className="h-4 w-4 text-[var(--sp-brand-text)]" />
             <div>
               <h2 className="text-sm font-semibold text-[#111827]">
                 {classLabel || "Schedule"}

@@ -28,9 +28,9 @@ import { cn } from "@/shared/lib/utils";
 import { StudentHeaderActions } from "@/presentation/components/templates/seniors/student/StudentHeaderActions";
 
 const INPUT =
-  "w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none";
+  "w-full rounded-lg border border-[#E5E7EB] px-3 py-2 text-sm text-[#1F2937] placeholder:text-[#9CA3AF] focus:border-[var(--sp-brand)] focus:outline-none";
 const BTN_PRIMARY =
-  "rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1D4ED8] disabled:opacity-60";
+  "rounded-lg bg-[var(--sp-brand)] px-4 py-2 text-sm font-semibold text-[var(--sp-on-brand)] hover:bg-[var(--sp-brand-hover)] disabled:opacity-60";
 const BTN_GHOST =
   "inline-flex items-center justify-center gap-2 rounded-lg border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-semibold text-[#374151] hover:bg-[#F9FAFB] disabled:opacity-60";
 
@@ -448,7 +448,7 @@ export function StudentHomeworkDetailClient({
                           href={url}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex rounded-xl bg-[#E8F0FE] px-3 py-2 text-sm font-semibold text-[#1a4696]"
+                          className="inline-flex rounded-xl bg-[var(--sp-brand-soft)] px-3 py-2 text-sm font-semibold text-[var(--sp-brand-text)]"
                         >
                           {fileLabel(url, i)}
                         </a>
@@ -980,7 +980,7 @@ export function StudentQuizPanel({
                     className={cn(
                       "flex cursor-pointer items-start gap-3 rounded-lg px-2.5 py-2.5 text-sm transition",
                       selected
-                        ? "bg-[#F0F5FF] ring-1 ring-[#1a4696]/35"
+                        ? "bg-[#F0F5FF] ring-1 ring-[var(--sp-brand)]/35"
                         : "hover:bg-[#F9FAFB]",
                     )}
                   >
@@ -988,7 +988,7 @@ export function StudentQuizPanel({
                       className={cn(
                         "mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[11px] font-semibold",
                         selected
-                          ? "bg-[#1a4696] text-white"
+                          ? "bg-[var(--sp-brand)] text-[var(--sp-on-brand)]"
                           : "bg-[#F3F4F6] text-[#6B7280]",
                       )}
                     >

@@ -317,8 +317,8 @@ function SeniorsAppShellInner({
               />
             ) : (
               <span
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white"
-                style={{ backgroundColor: accent }}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold"
+                style={{ backgroundColor: accent, color: "var(--sp-on-brand, #ffffff)" }}
                 aria-hidden
               >
                 {(ctx.academyName.trim()[0] || "S").toUpperCase()}
@@ -529,7 +529,7 @@ export function SeniorsAppShell(props: {
   hideTopBar?: boolean;
 }) {
   return (
-    <SeniorsThemeProvider>
+    <SeniorsThemeProvider brandHex={props.ctx.brandHex}>
       <SeniorsConfirmProvider>
         <SeniorsAppShellInner {...props} />
       </SeniorsConfirmProvider>

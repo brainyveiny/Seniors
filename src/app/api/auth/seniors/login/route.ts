@@ -80,7 +80,7 @@ export async function POST(request: Request) {
         userType: true,
         passwordHash: true,
         tenantId: true,
-        tenant: { select: { slug: true } },
+        tenant: { select: { slug: true, status: true } },
       },
       take: tenantSlug ? 4 : 8,
     });
@@ -109,6 +109,13 @@ export async function POST(request: Request) {
       if (joinRequest) {
         const role = joinRequest.role as "student" | "teacher";
         const resolvedTenant = joinRequest.tenant.slug;
+
+        if (joinRequest.tenant.status === "suspended") {
+          return NextResponse.json(
+            { error: "This school's access is suspended. Please contact Seniors support." },
+            { status: 403 },
+          );
+        }
 
         if (expectedRole && role !== expectedRole) {
           return NextResponse.json(
@@ -215,6 +222,13 @@ export async function POST(request: Request) {
     const user = matched[0]!;
     const role = user.userType as SeniorsRole;
     const resolvedTenant = user.tenant.slug;
+
+    if (user.tenant.status === "suspended") {
+      return NextResponse.json(
+        { error: "This school's access is suspended. Please contact Seniors support." },
+        { status: 403 },
+      );
+    }
 
     if (expectedRole && role !== expectedRole) {
       return NextResponse.json(

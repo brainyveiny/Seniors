@@ -8,15 +8,8 @@ import {
   requireTeacherApi,
 } from "@/infrastructure/seniors/seniors-api-auth";
 import { isR2Configured } from "@/infrastructure/storage/r2-config";
-import {
-  buildAcademyImageObjectKey,
-  uploadToR2,
-} from "@/infrastructure/storage/r2-storage";
-import {
-  isFirebaseStorageConfigured,
-  uploadToFirebaseStorage,
-} from "@/infrastructure/storage/firebase-storage";
-import { uploadSeniorsMediaToDb } from "@/infrastructure/storage/seniors-db-storage";
+import { isFirebaseStorageConfigured } from "@/infrastructure/storage/firebase-storage";
+import { storeSeniorsUpload } from "@/infrastructure/storage/seniors-upload";
 import {
   ACADEMY_IMAGE_MAX_BYTES,
   ACADEMY_IMAGE_MAX_MB,
@@ -97,72 +90,20 @@ export async function POST(request: NextRequest, context: RouteContext) {
     const buffer = Buffer.from(await file.arrayBuffer());
     const contentType = pdf ? "application/pdf" : file.type;
 
-    if (isR2Configured()) {
-      try {
-        const key = buildAcademyImageObjectKey(slug, file.name, contentType);
-        const uploaded = await uploadToR2({
-          key,
-          body: buffer,
-          contentType,
-        });
-        return NextResponse.json({
-          ok: true,
-          url: uploaded.url,
-          key: uploaded.key,
-          storage: "r2",
-          mimeType: contentType,
-        });
-      } catch (error) {
-        console.error(
-          "[seniors-media-upload] R2 failed, falling back",
-          error instanceof Error ? error.message : error,
-        );
-      }
-    }
-
-    if (isFirebaseStorageConfigured()) {
-      try {
-        const uploaded = await uploadToFirebaseStorage({
-          tenantSlug: slug,
-          fileName: file.name,
-          body: buffer,
-          contentType,
-        });
-        return NextResponse.json({
-          ok: true,
-          url: uploaded.url,
-          key: uploaded.path,
-          storage: "firebase",
-          mimeType: contentType,
-        });
-      } catch (error) {
-        console.error(
-          "[seniors-media-upload] Firebase failed, falling back",
-          error instanceof Error ? error.message : error,
-        );
-      }
-    }
-
-    // Durable fallback -works on Vercel (no local disk / no R2 bucket required)
     const tenant = await findTenantBySlug(slug);
     if (!tenant) {
       return NextResponse.json({ error: "School not found" }, { status: 404 });
     }
 
-    const uploaded = await uploadSeniorsMediaToDb({
+    const uploaded = await storeSeniorsUpload({
+      tenantSlug: slug,
       tenantId: tenant.id,
       fileName: file.name,
-      mimeType: contentType,
+      contentType,
       body: buffer,
     });
 
-    return NextResponse.json({
-      ok: true,
-      url: uploaded.url,
-      key: uploaded.id,
-      storage: "db",
-      mimeType: contentType,
-    });
+    return NextResponse.json({ ok: true, ...uploaded, mimeType: contentType });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Upload failed";
     console.error("[seniors-media-upload]", message);

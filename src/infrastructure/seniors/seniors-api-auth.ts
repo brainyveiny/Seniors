@@ -22,6 +22,13 @@ export async function resolveTenant(slug: string) {
   return findTenantBySlug(slug);
 }
 
+export function schoolSuspendedResponse() {
+  return NextResponse.json(
+    { error: "This school's access is suspended. Please contact Seniors support.", suspended: true },
+    { status: 403 },
+  );
+}
+
 function accountRemoved() {
   return NextResponse.json(
     { error: "Account no longer exists", removed: true },
@@ -41,6 +48,7 @@ export async function requireTeacherApi(
   }
   const tenant = await resolveTenant(slug);
   if (!tenant) return NextResponse.json({ error: "Tenant not found" }, { status: 404 });
+  if (tenant.status === "suspended") return schoolSuspendedResponse();
   if (!(await seniorsUserStillExists(tenant.id, session.userId, "teacher"))) {
     return accountRemoved();
   }
@@ -59,6 +67,7 @@ export async function requireStudentApi(
   }
   const tenant = await resolveTenant(slug);
   if (!tenant) return NextResponse.json({ error: "Tenant not found" }, { status: 404 });
+  if (tenant.status === "suspended") return schoolSuspendedResponse();
   if (!(await seniorsUserStillExists(tenant.id, session.userId, "student"))) {
     return accountRemoved();
   }
@@ -77,6 +86,7 @@ export async function requireSchoolAdminApi(
   }
   const tenant = await resolveTenant(slug);
   if (!tenant) return NextResponse.json({ error: "Tenant not found" }, { status: 404 });
+  if (tenant.status === "suspended") return schoolSuspendedResponse();
   if (!(await seniorsUserStillExists(tenant.id, session.userId, "school-admin"))) {
     return accountRemoved();
   }
@@ -95,6 +105,7 @@ export async function requireParentApi(
   }
   const tenant = await resolveTenant(slug);
   if (!tenant) return NextResponse.json({ error: "Tenant not found" }, { status: 404 });
+  if (tenant.status === "suspended") return schoolSuspendedResponse();
   if (!(await seniorsUserStillExists(tenant.id, session.userId, "parent"))) {
     return accountRemoved();
   }

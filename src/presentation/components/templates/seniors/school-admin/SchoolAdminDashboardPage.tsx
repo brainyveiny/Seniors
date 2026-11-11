@@ -371,7 +371,7 @@ export function SchoolAdminDashboardPage({
           <div className="mt-auto flex justify-end pt-5">
             <Link
               href={ctx.sitePath("school-admin/content")}
-              className="text-sm font-medium text-[#2563EB] hover:underline"
+              className="text-sm font-medium text-[var(--sp-brand-text)] hover:underline"
             >
               View detailed report →
             </Link>
